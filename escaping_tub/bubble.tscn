@@ -1,7 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://77vouj2k2qr0"]
+[gd_scene load_steps=39 format=3 uid="uid://77vouj2k2qr0"]
 
 [ext_resource type="Script" path="res://escaping_tub/bubble.gd" id="1_1j67c"]
 [ext_resource type="Texture2D" uid="uid://clttpambktckk" path="res://graphics/bubble-Idle.png" id="2_hbtox"]
+[ext_resource type="Texture2D" uid="uid://0orhuc5glgya" path="res://graphics/bubble-Pop.png" id="3_tw5ln"]
+[ext_resource type="Texture2D" uid="uid://bjwxe6p51lpi4" path="res://graphics/bubble_2-Idle.png" id="4_r05el"]
+[ext_resource type="Texture2D" uid="uid://orjofx74eone" path="res://graphics/bubble_3-Idle.png" id="4_rutci"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4glig"]
 
@@ -37,13 +40,105 @@ region = Rect2(384, 0, 64, 64)
 atlas = ExtResource("2_hbtox")
 region = Rect2(448, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_aeubh"]
+atlas = ExtResource("3_tw5ln")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irimk"]
+atlas = ExtResource("3_tw5ln")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkehy"]
+atlas = ExtResource("3_tw5ln")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rfah"]
+atlas = ExtResource("3_tw5ln")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj4mg"]
+atlas = ExtResource("3_tw5ln")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chsuc"]
+atlas = ExtResource("4_rutci")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rkus"]
+atlas = ExtResource("4_rutci")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffbk1"]
+atlas = ExtResource("4_rutci")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s32li"]
+atlas = ExtResource("4_rutci")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uyr6"]
+atlas = ExtResource("4_rutci")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itwyb"]
+atlas = ExtResource("4_rutci")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ud36h"]
+atlas = ExtResource("4_rutci")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_am4lx"]
+atlas = ExtResource("4_rutci")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jserj"]
+atlas = ExtResource("4_r05el")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqwat"]
+atlas = ExtResource("4_r05el")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nx1fi"]
+atlas = ExtResource("4_r05el")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob5f4"]
+atlas = ExtResource("4_r05el")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd7ar"]
+atlas = ExtResource("4_r05el")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trxai"]
+atlas = ExtResource("4_r05el")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udoye"]
+atlas = ExtResource("4_r05el")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qi5jm"]
+atlas = ExtResource("4_r05el")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rg1af"]
+atlas = ExtResource("4_r05el")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5s70e"]
+atlas = ExtResource("4_r05el")
+region = Rect2(576, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_n0v4u"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 5.0,
 "texture": SubResource("AtlasTexture_p4nam")
 }, {
-"duration": 1.0,
+"duration": 5.0,
 "texture": SubResource("AtlasTexture_ld8ix")
 }, {
 "duration": 1.0,
@@ -65,7 +160,91 @@ animations = [{
 "texture": SubResource("AtlasTexture_e7xki")
 }],
 "loop": true,
-"name": &"default",
+"name": &"normal",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aeubh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irimk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkehy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rfah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj4mg")
+}],
+"loop": true,
+"name": &"pop",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chsuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rkus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffbk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s32li")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2uyr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itwyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ud36h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_am4lx")
+}],
+"loop": true,
+"name": &"slow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jserj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqwat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nx1fi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ob5f4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd7ar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trxai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udoye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qi5jm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rg1af")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5s70e")
+}],
+"loop": true,
+"name": &"super",
 "speed": 5.0
 }]
 
@@ -78,7 +257,7 @@ shape = SubResource("CircleShape2D_4glig")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_n0v4u")
-frame_progress = 0.4399
+animation = &"normal"
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
 bank_paths = ["res://audio/Master.strings.bank", "res://audio/Master.bank", "res://audio/SFX.bank"]
@@ -88,4 +267,5 @@ event_name = "event:/Bottle_PopLvl1"
 event_guid = "{b4338d9c-af3e-4a0f-b9ad-d9cd3adfe29d}"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="stopped" from="FmodBankLoader/SFX_bubble_pop" to="." method="_on_sfx_bubble_pop_stopped"]
