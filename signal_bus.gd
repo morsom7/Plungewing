@@ -1,6 +1,10 @@
 extends Node
 # Always loaded files gobally available: https://docs.godotengine.org/en/stable/tutorials/scripting/singletons_autoload.html
 
+# GameManager
+signal purchase_made(cost)
+
+# Bottle
 signal bottle_popped
 
 # Rubber duck signals
