@@ -29,11 +29,13 @@ script = ExtResource("1_w5k2q")
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
 
 [node name="BackgroundMusic" type="FmodEventEmitter2D" parent="FmodBankLoader"]
+event_guid = "{cec9a28b-0003-0000-c191-c10505000000}"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1r0y6")
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D"]
+z_index = 10
 texture_filter = 1
 position = Vector2(3, -1)
 texture = ExtResource("2_dnlet")
@@ -47,11 +49,12 @@ limit_left = 0
 limit_bottom = 704
 limit_smoothed = true
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-z_index = 5
+[node name="Duck_bubble_particles" type="GPUParticles2D" parent="."]
+z_index = 1
+texture_filter = 1
 scale = Vector2(0.2, 0.2)
-amount = 15
+amount = 20
 process_material = SubResource("ParticleProcessMaterial_26naa")
 texture = ExtResource("2_dnlet")
-lifetime = 5.0
+lifetime = 3.0
 fixed_fps = 15
