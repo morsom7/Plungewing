@@ -1,25 +1,82 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2cxwo00kftak"]
+[gd_scene load_steps=17 format=3 uid="uid://c2cxwo00kftak"]
 
 [ext_resource type="PackedScene" uid="uid://bj7a2ak2p80u0" path="res://escaping_tub/rubber_duck.tscn" id="1_67ee0"]
+[ext_resource type="Script" path="res://escaping_tub/fat_man.gd" id="2_6sijt"]
 [ext_resource type="Script" path="res://escaping_tub/bathwater_area.gd" id="2_dwmuo"]
+[ext_resource type="Texture2D" uid="uid://by3upayanh00e" path="res://graphics/Colaflaske.png" id="2_sqqpr"]
+[ext_resource type="Texture2D" uid="uid://oxa87bewwjr5" path="res://graphics/Fatguy.png" id="5_qymea"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdft1"]
 size = Vector2(10000, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8j4ys"]
+atlas = ExtResource("2_sqqpr")
+region = Rect2(0, 0, 112, 176)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1uw00"]
+atlas = ExtResource("2_sqqpr")
+region = Rect2(0, 0, 112, 176)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncwvm"]
+atlas = ExtResource("2_sqqpr")
+region = Rect2(112, 0, 112, 176)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekmai"]
+atlas = ExtResource("2_sqqpr")
+region = Rect2(224, 0, 112, 176)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8b46p"]
+atlas = ExtResource("2_sqqpr")
+region = Rect2(336, 0, 112, 176)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnh7h"]
+atlas = ExtResource("2_sqqpr")
+region = Rect2(448, 0, 112, 176)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psv5h"]
+atlas = ExtResource("2_sqqpr")
+region = Rect2(560, 0, 112, 176)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_so465"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8j4ys")
+}],
+"loop": true,
+"name": &"bottle_rest",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1uw00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncwvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekmai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8b46p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnh7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psv5h")
+}],
+"loop": true,
+"name": &"bottle_shake",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hdaq6"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lbv6x"]
+
 [node name="EscapingTub" type="Node2D"]
-
-[node name="RubberDuck" parent="." instance=ExtResource("1_67ee0")]
-position = Vector2(224, 416)
-
-[node name="Launcher" type="Node2D" parent="."]
-
-[node name="Bottle" type="Polygon2D" parent="Launcher"]
-position = Vector2(128, 512)
-rotation = 0.785398
-polygon = PackedVector2Array(-40, 64, 40, 64, 40, -64, 16, -128, -16, -128, -40, -64)
-
-[node name="Bottle_DuckAnchor" type="Node2D" parent="Launcher/Bottle"]
-position = Vector2(-2.28882e-05, -135.764)
 
 [node name="Bathwater" type="Node" parent="."]
 
@@ -33,3 +90,49 @@ default_color = Color(0.27451, 0.533333, 1, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bathwater/BathwaterArea"]
 position = Vector2(5000, 640)
 shape = SubResource("RectangleShape2D_pdft1")
+
+[node name="FatMan" type="Node" parent="."]
+script = ExtResource("2_6sijt")
+shake_force = 80
+
+[node name="Sprite2D" type="Sprite2D" parent="FatMan"]
+position = Vector2(135, 528)
+texture = ExtResource("5_qymea")
+
+[node name="FatMan_arm_pivot" type="PinJoint2D" parent="FatMan"]
+position = Vector2(64, 512)
+node_a = NodePath("../StaticBody2D")
+node_b = NodePath("Launcher")
+
+[node name="Launcher" type="RigidBody2D" parent="FatMan/FatMan_arm_pivot"]
+position = Vector2(-64, -512)
+angular_damp = 100.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FatMan/FatMan_arm_pivot/Launcher"]
+position = Vector2(264, 496)
+rotation = 0.785397
+sprite_frames = SubResource("SpriteFrames_so465")
+animation = &"bottle_shake"
+frame_progress = 0.318222
+
+[node name="Bottle_DuckAnchor" type="Node2D" parent="FatMan/FatMan_arm_pivot/Launcher/AnimatedSprite2D"]
+position = Vector2(0, -90.5092)
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FatMan/FatMan_arm_pivot/Launcher"]
+position = Vector2(248, 512)
+shape = SubResource("CircleShape2D_hdaq6")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="FatMan"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FatMan/StaticBody2D"]
+position = Vector2(64, 512)
+shape = SubResource("CircleShape2D_lbv6x")
+
+[node name="RubberDuck" parent="." instance=ExtResource("1_67ee0")]
+position = Vector2(328, 432)
+cannon_power = null
+flap_power = null
+flaps_available = null
+swimming_rings_available = null
+metadata/_edit_lock_ = true

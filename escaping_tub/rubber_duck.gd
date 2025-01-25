@@ -9,7 +9,9 @@ var control_mode = BOTTLE_MODE
 @export var flaps_available: int = 1					# Flapping increases height and allows for more glide
 @export var swimming_rings_available: int = 0			# Gives a bounce if hits the water
 var is_attached_to_cannon: bool = true						# Checks if duck is launched
-@onready var bottle_duck_anchor: Node2D = $"../Launcher/Bottle/Bottle_DuckAnchor"
+
+
+
 var is_at_rest: bool = false
 
 func _ready() -> void:	
@@ -39,6 +41,7 @@ func launch():
 	control_mode = DUCK_MODE
 	gravity_scale = 1
 	apply_impulse(Vector2(2000,2000))
+	apply_torque_impulse(500)
 	pass
 
 func flap() -> void:
