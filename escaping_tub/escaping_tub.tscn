@@ -1,8 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2cxwo00kftak"]
+[gd_scene load_steps=4 format=3 uid="uid://c2cxwo00kftak"]
 
 [ext_resource type="PackedScene" uid="uid://bj7a2ak2p80u0" path="res://escaping_tub/rubber_duck.tscn" id="1_67ee0"]
+[ext_resource type="Script" path="res://escaping_tub/bathwater_area.gd" id="2_dwmuo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pdft1"]
+size = Vector2(10000, 128)
 
 [node name="EscapingTub" type="Node2D"]
 
 [node name="RubberDuck" parent="." instance=ExtResource("1_67ee0")]
-position = Vector2(575, 327)
+position = Vector2(224, 416)
+
+[node name="Launcher" type="Node2D" parent="."]
+
+[node name="Bottle" type="Polygon2D" parent="Launcher"]
+position = Vector2(128, 512)
+rotation = 0.785398
+polygon = PackedVector2Array(-40, 64, 40, 64, 40, -64, 16, -128, -16, -128, -40, -64)
+
+[node name="Bottle_DuckAnchor" type="Node2D" parent="Launcher/Bottle"]
+position = Vector2(-2.28882e-05, -135.764)
+
+[node name="Bathwater" type="Node" parent="."]
+
+[node name="BathwaterArea" type="Area2D" parent="Bathwater" groups=["Bathwater"]]
+script = ExtResource("2_dwmuo")
+
+[node name="Line2D" type="Line2D" parent="Bathwater/BathwaterArea"]
+points = PackedVector2Array(0, 574, 10000, 574)
+default_color = Color(0.27451, 0.533333, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bathwater/BathwaterArea"]
+position = Vector2(5000, 640)
+shape = SubResource("RectangleShape2D_pdft1")

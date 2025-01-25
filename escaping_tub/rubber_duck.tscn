@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bj7a2ak2p80u0"]
+[gd_scene load_steps=3 format=3 uid="uid://bj7a2ak2p80u0"]
 
 [ext_resource type="Script" path="res://escaping_tub/rubber_duck.gd" id="1_w5k2q"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ggcmc"]
+
 [node name="RubberDuck" type="RigidBody2D"]
+gravity_scale = 0.0
 script = ExtResource("1_w5k2q")
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
@@ -12,5 +15,12 @@ script = ExtResource("1_w5k2q")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ggcmc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_bottom = 100000
+limit_smoothed = true
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, 10, 7, 7, 10, 0, 7, -7, 0, -10, -7, -7, -10, 0, -7, 7)
