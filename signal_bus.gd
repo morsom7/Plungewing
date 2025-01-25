@@ -5,18 +5,17 @@ extends Node
 signal open_main_menu
 signal next_escape_attempt
 signal open_shop
-signal purchase_made(cost)
+signal currency_updated(cost)
 
 # Bottle
 signal bottle_popped
 
 # Rubber duck signals
-signal duck_stops_moving
 signal duck_flaps
 signal duck_splash
 
 # Bubble signals
-signal duck_bubble_bounced(bounce_power:float, bounce_type:String)
+signal duck_bubble_bounced(bounce_type:String)
 
 
 # ***** Signals *****

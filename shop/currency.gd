@@ -1,7 +1,7 @@
 extends Label
 
 func _ready() -> void:
-	SignalBus.purchase_made.connect(purchase_made)
+	SignalBus.currency_updated.connect(purchase_made)
 	update_text()
 
 func update_text() ->void:
