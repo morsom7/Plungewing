@@ -1,8 +1,6 @@
 extends Area2D
 
-
 @export var bubble_type:String = "normal"
-
 
 func _ready() -> void:
 	#match type:
@@ -10,6 +8,7 @@ func _ready() -> void:
 		#BUBBLE_TYPE.SLOW: $AnimatedSprite2D.animation = ???
 		#BUBBLE_TYPE.SUPER: $AnimatedSprite2D.animation = ???
 	pass # Replace with function body.
+	
 
 
 func _on_body_entered(body: Node) -> void:
