@@ -17,8 +17,6 @@ func update_texts() -> void:
 
 
 func _on_button_up() -> void:
-	var variable = GameManager.FLAP_AMOUNT			# UPDATE!!!
-	# If enough currency
 	if GameManager.CURRENCY > get_cost():
 		GameManager.increase_flap_amount(get_cost())
 		update_texts()
