@@ -2,6 +2,9 @@ extends Node
 # Always loaded files gobally available: https://docs.godotengine.org/en/stable/tutorials/scripting/singletons_autoload.html
 
 # GameManager
+signal open_main_menu
+signal next_escape_attempt
+signal open_shop
 signal purchase_made(cost)
 
 # Bottle
