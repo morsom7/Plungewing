@@ -29,7 +29,7 @@ DSP/dsp_buffer_count=4
 [application]
 
 config/name="Plungewing"
-run/main_scene="res://escaping_tub.tscn"
+run/main_scene="res://escaping_tub/escaping_tub.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 

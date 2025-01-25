@@ -1,13 +1,13 @@
 [gd_scene load_steps=2 format=3 uid="uid://bj7a2ak2p80u0"]
 
-[ext_resource type="Script" path="res://rubber_duck.gd" id="1_w5k2q"]
+[ext_resource type="Script" path="res://escaping_tub/rubber_duck.gd" id="1_w5k2q"]
 
 [node name="RubberDuck" type="RigidBody2D"]
 script = ExtResource("1_w5k2q")
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
 
-[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="FmodBankLoader"]
+[node name="BackgroundMusic" type="FmodEventEmitter2D" parent="FmodBankLoader"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 

@@ -10,7 +10,9 @@ signal duck_bubble_bounced(bounce_power:float, bounce_type:String)
 
 
 # ***** Signals *****
-# More on Signals: https://docs.godotengine.org/en/stable/getting_started/step_by_step/signals.html
+#
+# More on Signals: 
+# https://docs.godotengine.org/en/stable/getting_started/step_by_step/signals.html
 #
 # ** To emit a signal from somewhere: **
 #	func _whatever_function():
