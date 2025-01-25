@@ -39,7 +39,7 @@ FmodManager="*res://addons/fmod/FmodManager.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
 
 [input]
 
