@@ -11,6 +11,10 @@ radius = 13.0384
 [node name="RubberDuck" type="RigidBody2D"]
 gravity_scale = 0.0
 script = ExtResource("1_w5k2q")
+cannon_power = null
+flap_power = null
+flaps_available = null
+swimming_rings_available = null
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
 
