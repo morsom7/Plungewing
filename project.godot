@@ -31,6 +31,7 @@ DSP/dsp_buffer_count=4
 config/name="Plungewing"
 run/main_scene="res://escaping_tub/escaping_tub.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/bg_color=Color(0.843137, 0.482353, 0.729412, 1)
 config/icon="res://icon.svg"
 
 [autoload]
@@ -42,6 +43,11 @@ GameManager="*res://game_manager.gd"
 [debug]
 
 gdscript/warnings/unused_signal=0
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [editor_plugins]
 

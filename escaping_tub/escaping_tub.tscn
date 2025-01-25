@@ -9,7 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://dp5sdsdh3n2ef" path="res://graphics/BG_bad.png" id="7_hx222"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdft1"]
-size = Vector2(10000, 128)
+size = Vector2(50480, 24)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lbv6x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8j4ys"]
 atlas = ExtResource("2_sqqpr")
@@ -76,8 +78,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_hdaq6"]
 radius = 16.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lbv6x"]
-
 [node name="EscapingTub" type="Node2D"]
 
 [node name="Bathwater" type="Node" parent="."]
@@ -85,12 +85,8 @@ radius = 16.0
 [node name="BathwaterArea" type="Area2D" parent="Bathwater" groups=["Bathwater"]]
 script = ExtResource("2_dwmuo")
 
-[node name="Line2D" type="Line2D" parent="Bathwater/BathwaterArea"]
-points = PackedVector2Array(0, 574, 10000, 574)
-default_color = Color(0.27451, 0.533333, 1, 1)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bathwater/BathwaterArea"]
-position = Vector2(5000, 640)
+position = Vector2(25240, 588)
 shape = SubResource("RectangleShape2D_pdft1")
 
 [node name="FatMan" type="Node" parent="."]
@@ -101,39 +97,29 @@ shake_force = 80
 position = Vector2(135, 528)
 texture = ExtResource("5_qymea")
 
-[node name="FatMan_arm_pivot" type="PinJoint2D" parent="FatMan"]
-position = Vector2(64, 512)
-node_a = NodePath("../FatMan_body")
-node_b = NodePath("Launcher")
-bias = 0.26
-disable_collision = false
-angular_limit_lower = -0.261799
-angular_limit_upper = 0.261799
+[node name="FatMan_body" type="StaticBody2D" parent="FatMan"]
 
-[node name="Launcher" type="RigidBody2D" parent="FatMan/FatMan_arm_pivot"]
-position = Vector2(-64, -512)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FatMan/FatMan_body"]
+position = Vector2(64, 512)
+shape = SubResource("CircleShape2D_lbv6x")
+
+[node name="Launcher" type="RigidBody2D" parent="FatMan"]
+gravity_scale = 0.0
 angular_damp = 100.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FatMan/FatMan_arm_pivot/Launcher"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FatMan/Launcher"]
 position = Vector2(264, 496)
 rotation = 0.785397
 sprite_frames = SubResource("SpriteFrames_so465")
 animation = &"bottle_shake"
 frame_progress = 0.318222
 
-[node name="Bottle_DuckAnchor" type="Node2D" parent="FatMan/FatMan_arm_pivot/Launcher/AnimatedSprite2D"]
+[node name="Bottle_DuckAnchor" type="Node2D" parent="FatMan/Launcher/AnimatedSprite2D"]
 position = Vector2(0, -90.5092)
-scale = Vector2(1, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FatMan/FatMan_arm_pivot/Launcher"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FatMan/Launcher"]
 position = Vector2(248, 512)
 shape = SubResource("CircleShape2D_hdaq6")
-
-[node name="FatMan_body" type="StaticBody2D" parent="FatMan"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FatMan/FatMan_body"]
-position = Vector2(64, 512)
-shape = SubResource("CircleShape2D_lbv6x")
 
 [node name="RubberDuck" parent="." instance=ExtResource("1_67ee0")]
 position = Vector2(328, 432)
@@ -143,18 +129,23 @@ metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Bathtub"]
 z_index = -1
-position = Vector2(4976, 524)
-scale = Vector2(15.55, 1)
+position = Vector2(24972, 524)
+scale = Vector2(78.0375, 1)
 texture = ExtResource("6_e31ki")
+
+[node name="Polygon2D" type="Polygon2D" parent="Bathtub"]
+z_index = -1
+color = Color(0.827451, 0.862745, 0.886275, 1)
+polygon = PackedVector2Array(0, 704, 50000, 704, 50000, 1152, 0, 1152)
 
 [node name="BathWall" type="Node" parent="."]
 
-[node name="Background" type="CanvasLayer" parent="BathWall"]
-
-[node name="CanvasGroup" type="CanvasGroup" parent="BathWall"]
+[node name="TextureRect" type="TextureRect" parent="BathWall"]
+z_index = -5
 texture_filter = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="BathWall"]
-z_index = -2
-position = Vector2(888, 328)
+offset_left = -256.0
+offset_top = -10792.0
+offset_right = 49944.0
+offset_bottom = 1024.0
 texture = ExtResource("7_hx222")
+stretch_mode = 1

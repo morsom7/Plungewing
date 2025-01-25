@@ -9,8 +9,9 @@ var control_mode = BOTTLE_MODE
 @export var flaps_available: int = 1					# Flapping increases height and allows for more glide
 @export var swimming_rings_available: int = 0			# Gives a bounce if hits the water
 var is_attached_to_cannon: bool = true						# Checks if duck is launched
-@onready var bottle_duck_anchor: Node2D = $"../FatMan/FatMan_arm_pivot/Launcher/AnimatedSprite2D/Bottle_DuckAnchor"
-@onready var launcher: RigidBody2D = $"../FatMan/FatMan_arm_pivot/Launcher"
+@onready var bottle_duck_anchor: Node2D = $"../FatMan/Launcher/AnimatedSprite2D/Bottle_DuckAnchor"
+@onready var launcher: RigidBody2D = $"../FatMan/Launcher"
+
 
 var is_at_rest: bool = false
 
