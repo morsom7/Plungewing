@@ -1,15 +1,20 @@
 extends RigidBody2D
 
-signal stops_moving
 
 # Upgradables
 var flap_power: float = 1					# Strength of the flap
 var flaps_available: int = 1					# Flapping increases height and allows for more glide
 var swimming_rings_available: int = 0			# Gives a bounce if hits the water
 
+func _ready() -> void:	
+	SignalBus.duck_flaps.connect(flap)	# When signal "duck_flaps" is triggered, it calls the function "flap()"
+	SignalBus.duck_bounced.connect(bounce)
+	pass
+	#test FMOD
+
 func _physics_process(delta: float) -> void:		
 	if Input.is_action_just_pressed("flap_and_glide"):	# Flapping to increase height
-		flap()		
+		SignalBus.duck_flaps.emit() 
 	if Input.is_action_just_released("flap_and_glide"):	# Keeping space to glide, stop gliding when released
 		# stop gliding
 		pass
@@ -17,7 +22,7 @@ func _physics_process(delta: float) -> void:
 	# Checking if movements stops
 	var velocity = get_linear_velocity()
 	if velocity == Vector2(0,0):
-		stops_moving.emit()
+		SignalBus.duck_stops_moving.emit()
 		print("Stopped moving!")
 
 func flap() -> void:
@@ -35,5 +40,5 @@ func glide() -> void:
 	# play sound	
 	pass
 
-func bounce(bubble_power: float) -> void:
-	apply_impulse(Vector2(0,-bubble_power))
+func bounce(bounce_power: float) -> void:
+	apply_impulse(Vector2(0,-bounce_power))
