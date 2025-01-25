@@ -29,6 +29,7 @@ script = ExtResource("1_w5k2q")
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
 
 [node name="BackgroundMusic" type="FmodEventEmitter2D" parent="FmodBankLoader"]
+event_guid = "{00000000-0003-0000-0000-000005000000}"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1r0y6")

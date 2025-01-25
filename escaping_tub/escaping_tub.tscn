@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c2cxwo00kftak"]
+[gd_scene load_steps=20 format=3 uid="uid://c2cxwo00kftak"]
 
 [ext_resource type="PackedScene" uid="uid://bj7a2ak2p80u0" path="res://escaping_tub/rubber_duck.tscn" id="1_67ee0"]
 [ext_resource type="Script" path="res://escaping_tub/fat_man.gd" id="2_6sijt"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://oxa87bewwjr5" path="res://graphics/Fatguy.png" id="5_qymea"]
 [ext_resource type="Texture2D" uid="uid://cwdsq6o4fhqcu" path="res://graphics/Badekar.png" id="6_e31ki"]
 [ext_resource type="Texture2D" uid="uid://dp5sdsdh3n2ef" path="res://graphics/BG_bad.png" id="7_hx222"]
+[ext_resource type="PackedScene" uid="uid://dbix2pmptn7vk" path="res://escaping_tub/bubble_spawner.tscn" id="8_27asf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdft1"]
 size = Vector2(50480, 56)
@@ -124,7 +125,6 @@ shape = SubResource("CircleShape2D_hdaq6")
 
 [node name="RubberDuck" parent="." instance=ExtResource("1_67ee0")]
 position = Vector2(328, 432)
-collision_layer = 2
 flap_power = 1.0
 swimming_rings_available = 1
 is_gliding = true
@@ -155,4 +155,9 @@ offset_bottom = 1024.0
 texture = ExtResource("7_hx222")
 stretch_mode = 1
 
+[node name="BubbleSpawner" parent="." instance=ExtResource("8_27asf")]
+position = Vector2(451, 472)
+
 [connection signal="body_entered" from="Bathwater/BathwaterArea" to="Bathwater/BathwaterArea" method="_on_body_entered"]
+
+[editable path="BubbleSpawner"]
