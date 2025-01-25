@@ -94,6 +94,7 @@ text = "Upgrade: €10"
 script = ExtResource("3_u4nti")
 
 [node name="Type" type="Label" parent="Bottle/Upgrade bottle"]
+layout_mode = 0
 offset_left = -2.0
 offset_top = -43.0
 offset_right = 80.0
@@ -137,6 +138,7 @@ text = "Increase: €10"
 script = ExtResource("4_241jp")
 
 [node name="Amount" type="Label" parent="Flaps/Increase flap amount"]
+layout_mode = 0
 offset_top = -36.0
 offset_right = 63.0
 offset_bottom = -13.0
@@ -155,6 +157,7 @@ text = "Upgrade: €10"
 script = ExtResource("5_q5oxt")
 
 [node name="Amount" type="Label" parent="Swimming Ring/Increase swimming ring"]
+layout_mode = 0
 offset_left = -2.0
 offset_top = -43.0
 offset_right = 205.0
