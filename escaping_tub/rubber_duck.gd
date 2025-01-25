@@ -38,14 +38,10 @@ func _physics_process(delta: float) -> void:
 				glide_up()
 			if Input.is_action_pressed("duck_glide_down"):
 				glide_down()
-		
-		pass
-	
-	# Checking if movements stops
-		var velocity = get_linear_velocity()
-		if velocity == Vector2(0,0) and global_position.x>225:
-			print("Stopped moving!")
-			SignalBus.duck_stops_moving.emit()
+
+func _notification(what):
+	if Input.is_action_just_pressed("exit_game"):
+		get_tree().quit() # default behavior
 
 func launch():
 	control_mode = DUCK_MODE
@@ -58,7 +54,7 @@ func flap() -> void:
 	if flaps_available > 0:
 		SignalBus.duck_flaps.emit() 
 		is_gliding = true
-		apply_impulse(Vector2(0,linear_velocity.y * flap_power))
+		apply_impulse(Vector2(0,linear_velocity.y * flap_power * get_process_delta_time()))
 		
 	# play animation
 	# play sound	
@@ -66,7 +62,7 @@ func flap() -> void:
 	pass
 
 func glide_up() -> void:
-	apply_impulse(Vector2(0,-glide_power * 100))
+	apply_impulse(Vector2(0,-glide_power * 250 * get_physics_process_delta_time()))
 	global_rotation_degrees = -15
 	# add slight upwards force to counteract gravity
 	# play animation
@@ -74,7 +70,7 @@ func glide_up() -> void:
 	pass
 	
 func glide_down() -> void:
-	apply_impulse(Vector2(0,glide_power * 100))
+	apply_impulse(Vector2(0,glide_power * 250 * get_physics_process_delta_time()))
 	global_rotation_degrees = 15
 	# add slight upwards force to counteract gravity
 	# play animation
@@ -82,10 +78,18 @@ func glide_down() -> void:
 	pass
 	
 func bounce(bounce_power: float) -> void:
-	apply_impulse(Vector2(0,-bounce_power))
+	apply_impulse(Vector2(0,-linear_velocity.y * bounce_power))
+	swimming_rings_available -= 1
 	
 func is_hit() -> void:
 	is_gliding = false
 	add_constant_torque(500)
-	
-func duck_splash()
+
+func _on_bathwater_area_body_entered(body: Node2D) -> void:
+	if swimming_rings_available > 0:
+		bounce(2)
+		return
+	linear_velocity = Vector2(0,0)
+	gravity_scale = 0
+	set_physics_process(false)
+	pass # Replace with function body.

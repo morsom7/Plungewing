@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dp5sdsdh3n2ef" path="res://graphics/BG_bad.png" id="7_hx222"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdft1"]
-size = Vector2(50480, 24)
+size = Vector2(50480, 56)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lbv6x"]
 
@@ -86,7 +86,7 @@ radius = 16.0
 script = ExtResource("2_dwmuo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bathwater/BathwaterArea"]
-position = Vector2(25240, 588)
+position = Vector2(25240, 572)
 shape = SubResource("RectangleShape2D_pdft1")
 
 [node name="FatMan" type="Node" parent="."]
@@ -123,11 +123,8 @@ shape = SubResource("CircleShape2D_hdaq6")
 
 [node name="RubberDuck" parent="." instance=ExtResource("1_67ee0")]
 position = Vector2(328, 432)
-cannon_power = null
-flap_power = null
-flaps_available = null
-swimming_rings_available = null
-glide_power = null
+flap_power = 1.0
+swimming_rings_available = 1
 is_gliding = true
 metadata/_edit_lock_ = true
 
