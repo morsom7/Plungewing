@@ -8,7 +8,7 @@ var swimming_rings_available: int = 0			# Gives a bounce if hits the water
 
 func _ready() -> void:	
 	SignalBus.duck_flaps.connect(flap)	# When signal "duck_flaps" is triggered, it calls the function "flap()"
-	SignalBus.duck_bounced.connect(bounce)
+	SignalBus.duck_bubble_bounced.connect(bounce)
 	pass
 	#test FMOD
 

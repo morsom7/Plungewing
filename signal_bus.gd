@@ -1,16 +1,16 @@
 extends Node
+# Always loaded files gobally available: https://docs.godotengine.org/en/stable/tutorials/scripting/singletons_autoload.html
 
 # Rubber duck signals
 signal duck_stops_moving
 signal duck_flaps
 
 # Bubble signals
-signal duck_bounced(bounce_power)
+signal duck_bubble_bounced(bounce_power:float, bounce_type:String)
 
 
 # ***** Signals *****
 # More on Signals: https://docs.godotengine.org/en/stable/getting_started/step_by_step/signals.html
-# Always loaded files gobally available: https://docs.godotengine.org/en/stable/tutorials/scripting/singletons_autoload.html
 #
 # ** To emit a signal from somewhere: **
 #	func _whatever_function():

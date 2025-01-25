@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2cxwo00kftak"]
-
-[ext_resource type="PackedScene" uid="uid://bj7a2ak2p80u0" path="res://rubber_duck.tscn" id="1_fp822"]
-
-[node name="MainMenu" type="Node2D"]
-
-[node name="RubberDuck" parent="." instance=ExtResource("1_fp822")]
-position = Vector2(575, 327)

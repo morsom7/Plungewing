@@ -5,6 +5,10 @@
 [node name="RubberDuck" type="RigidBody2D"]
 script = ExtResource("1_w5k2q")
 
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="FmodBankLoader"]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
