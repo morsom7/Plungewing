@@ -1,9 +1,62 @@
-[gd_scene load_steps=6 format=3 uid="uid://bj7a2ak2p80u0"]
+[gd_scene load_steps=13 format=3 uid="uid://bj7a2ak2p80u0"]
 
 [ext_resource type="Script" path="res://escaping_tub/rubber_duck.gd" id="1_w5k2q"]
+[ext_resource type="Texture2D" uid="uid://cu4yq7t81abmp" path="res://graphics/Bade_anim.png" id="2_5frq0"]
 [ext_resource type="Texture2D" uid="uid://ho065e04d3bu" path="res://graphics/Bade_and_skisser.png" id="2_dnlet"]
+[ext_resource type="Texture2D" uid="uid://c54jsrdys5ech" path="res://graphics/bubble.png" id="4_bca5t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ea5iy"]
+atlas = ExtResource("2_5frq0")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j47n0"]
+atlas = ExtResource("2_5frq0")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mayk5"]
+atlas = ExtResource("2_5frq0")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dl2f1"]
+atlas = ExtResource("2_5frq0")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3kgl"]
+atlas = ExtResource("2_dnlet")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1r0y6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ea5iy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j47n0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mayk5")
+}],
+"loop": true,
+"name": &"duck_anim_glide",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dl2f1")
+}],
+"loop": true,
+"name": &"duck_anim_hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3kgl")
+}],
+"loop": true,
+"name": &"duck_anim_idle",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ggcmc"]
 radius = 13.0384
@@ -15,9 +68,11 @@ emission_shape = 1
 emission_sphere_radius = 35.52
 angle_min = -720.0
 angle_max = 720.0
-gravity = Vector3(0, -9.81, 0)
-scale_min = 0.2
-scale_max = 0.3
+angular_velocity_min = -23.23
+angular_velocity_max = 23.22
+gravity = Vector3(0, -5, 0)
+scale_min = 0.05
+scale_max = 0.2
 hue_variation_min = -1.0
 hue_variation_max = 1.0
 
@@ -32,13 +87,11 @@ script = ExtResource("1_w5k2q")
 event_guid = "{cec9a28b-0003-0000-c191-c10505000000}"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_1r0y6")
-
-[node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D"]
-z_index = 10
+z_index = 5
 texture_filter = 1
-position = Vector2(3, -1)
-texture = ExtResource("2_dnlet")
+sprite_frames = SubResource("SpriteFrames_1r0y6")
+animation = &"duck_anim_idle"
+frame_progress = 0.779218
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ggcmc")
@@ -55,6 +108,8 @@ texture_filter = 1
 scale = Vector2(0.2, 0.2)
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_26naa")
-texture = ExtResource("2_dnlet")
-lifetime = 3.0
+texture = ExtResource("4_bca5t")
+lifetime = 5.0
 fixed_fps = 15
+collision_base_size = 0.5
+visibility_rect = Rect2(-50, -50, 50, 50)
