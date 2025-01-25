@@ -1,7 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfqhknauj8snl"]
+[gd_scene load_steps=12 format=3 uid="uid://bfqhknauj8snl"]
 
 [ext_resource type="Script" path="res://shop/currency.gd" id="1_8tb5v"]
 [ext_resource type="Script" path="res://shop/increase_flap_power.gd" id="1_psjwu"]
+[ext_resource type="Script" path="res://shop/next_attempt.gd" id="2_d6d5h"]
+[ext_resource type="Script" path="res://shop/upgrade_bottle.gd" id="3_u4nti"]
+[ext_resource type="Script" path="res://shop/increase_flap_amount.gd" id="4_241jp"]
+[ext_resource type="Script" path="res://shop/increase_swimming_ring.gd" id="5_q5oxt"]
+
+[sub_resource type="GDScript" id="GDScript_j71i7"]
+script/source = "extends Control
+
+"
 
 [sub_resource type="LabelSettings" id="LabelSettings_8bev2"]
 font_size = 48
@@ -26,6 +35,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_j71i7")
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://audio/Master.strings.bank", "res://audio/Master.bank", "res://audio/Music.bank", "res://audio/SFX.bank"]
+
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="FmodBankLoader"]
+event_name = "event:/Music/Music_Shop"
+event_guid = "{fc4e0b29-f3b8-4ce3-8c35-fa4981541f00}"
+autoplay = true
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 0
@@ -55,22 +73,33 @@ label_settings = SubResource("LabelSettings_j060h")
 horizontal_alignment = 2
 script = ExtResource("1_8tb5v")
 
+[node name="NextAttempt" type="Button" parent="."]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 71.0
+offset_right = 671.0
+offset_bottom = 125.0
+text = "Click here to start your
+Next Escape Attempt"
+script = ExtResource("2_d6d5h")
+
 [node name="Bottle" type="CanvasGroup" parent="."]
 
-[node name="Label" type="Label" parent="Bottle"]
-offset_left = 76.0
-offset_top = 155.0
-offset_right = 158.0
-offset_bottom = 194.0
-text = "Bottle"
-label_settings = SubResource("LabelSettings_cophi")
-
-[node name="Button" type="Button" parent="Bottle"]
+[node name="Upgrade bottle" type="Button" parent="Bottle"]
 offset_left = 78.0
 offset_top = 198.0
 offset_right = 189.0
 offset_bottom = 229.0
 text = "Upgrade: €10"
+script = ExtResource("3_u4nti")
+
+[node name="Type" type="Label" parent="Bottle/Upgrade bottle"]
+offset_left = -2.0
+offset_top = -43.0
+offset_right = 80.0
+offset_bottom = -4.0
+text = "Bottle"
+label_settings = SubResource("LabelSettings_cophi")
 
 [node name="Flaps" type="CanvasGroup" parent="."]
 position = Vector2(204, 2)
@@ -99,37 +128,42 @@ offset_bottom = -5.0
 text = "Power: Low"
 label_settings = SubResource("LabelSettings_vg6r5")
 
-[node name="Amount" type="Label" parent="Flaps"]
-offset_left = 83.0
-offset_top = 331.0
-offset_right = 146.0
-offset_bottom = 354.0
-text = "Amount"
-label_settings = SubResource("LabelSettings_vg6r5")
-
 [node name="Increase flap amount" type="Button" parent="Flaps"]
 offset_left = 83.0
 offset_top = 367.0
 offset_right = 194.0
 offset_bottom = 398.0
 text = "Increase: €10"
+script = ExtResource("4_241jp")
+
+[node name="Amount" type="Label" parent="Flaps/Increase flap amount"]
+offset_top = -36.0
+offset_right = 63.0
+offset_bottom = -13.0
+text = "Amount"
+label_settings = SubResource("LabelSettings_vg6r5")
 
 [node name="Swimming Ring" type="CanvasGroup" parent="."]
 position = Vector2(412, 3)
 
-[node name="Label" type="Label" parent="Swimming Ring"]
-offset_left = 76.0
-offset_top = 155.0
-offset_right = 158.0
-offset_bottom = 194.0
-text = "Swimming Ring"
-label_settings = SubResource("LabelSettings_cophi")
-
-[node name="Button" type="Button" parent="Swimming Ring"]
+[node name="Increase swimming ring" type="Button" parent="Swimming Ring"]
 offset_left = 78.0
 offset_top = 198.0
 offset_right = 189.0
 offset_bottom = 229.0
 text = "Upgrade: €10"
+script = ExtResource("5_q5oxt")
 
+[node name="Amount" type="Label" parent="Swimming Ring/Increase swimming ring"]
+offset_left = -2.0
+offset_top = -43.0
+offset_right = 205.0
+offset_bottom = -4.0
+text = "Swimming Ring"
+label_settings = SubResource("LabelSettings_cophi")
+
+[connection signal="button_up" from="NextAttempt" to="NextAttempt" method="_on_button_up"]
+[connection signal="button_up" from="Bottle/Upgrade bottle" to="Bottle/Upgrade bottle" method="_on_button_up"]
 [connection signal="button_up" from="Flaps/Increase flap power" to="Flaps/Increase flap power" method="_on_button_up"]
+[connection signal="button_up" from="Flaps/Increase flap amount" to="Flaps/Increase flap amount" method="_on_button_up"]
+[connection signal="button_up" from="Swimming Ring/Increase swimming ring" to="Swimming Ring/Increase swimming ring" method="_on_button_up"]
