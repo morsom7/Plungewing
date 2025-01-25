@@ -1,0 +1,134 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfqhknauj8snl"]
+
+[ext_resource type="Script" path="res://shop/currency.gd" id="1_8tb5v"]
+[ext_resource type="Script" path="res://shop/increase_flap_power.gd" id="1_psjwu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8bev2"]
+font_size = 48
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j060h"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cophi"]
+font_size = 28
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vg6r5"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 51.0
+offset_right = 1106.0
+offset_bottom = 602.0
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 57.0
+offset_right = 184.0
+offset_bottom = 124.0
+text = "Shop
+"
+label_settings = SubResource("LabelSettings_8bev2")
+
+[node name="Currency" type="Label" parent="."]
+layout_mode = 0
+offset_left = 919.0
+offset_top = 64.0
+offset_right = 1092.0
+offset_bottom = 98.0
+text = "Currency: 9999"
+label_settings = SubResource("LabelSettings_j060h")
+horizontal_alignment = 2
+script = ExtResource("1_8tb5v")
+
+[node name="Bottle" type="CanvasGroup" parent="."]
+
+[node name="Label" type="Label" parent="Bottle"]
+offset_left = 76.0
+offset_top = 155.0
+offset_right = 158.0
+offset_bottom = 194.0
+text = "Bottle"
+label_settings = SubResource("LabelSettings_cophi")
+
+[node name="Button" type="Button" parent="Bottle"]
+offset_left = 78.0
+offset_top = 198.0
+offset_right = 189.0
+offset_bottom = 229.0
+text = "Upgrade: €10"
+
+[node name="Flaps" type="CanvasGroup" parent="."]
+position = Vector2(204, 2)
+
+[node name="Label" type="Label" parent="Flaps"]
+offset_left = 76.0
+offset_top = 155.0
+offset_right = 158.0
+offset_bottom = 194.0
+text = "Flaps"
+label_settings = SubResource("LabelSettings_cophi")
+
+[node name="Increase flap power" type="Button" parent="Flaps"]
+offset_left = 82.0
+offset_top = 276.0
+offset_right = 193.0
+offset_bottom = 307.0
+text = "Upgrade: €10"
+script = ExtResource("1_psjwu")
+
+[node name="Power" type="Label" parent="Flaps/Increase flap power"]
+offset_top = -28.0
+offset_right = 89.0
+offset_bottom = -5.0
+text = "Power: Low"
+label_settings = SubResource("LabelSettings_vg6r5")
+
+[node name="Amount" type="Label" parent="Flaps"]
+offset_left = 83.0
+offset_top = 331.0
+offset_right = 146.0
+offset_bottom = 354.0
+text = "Amount"
+label_settings = SubResource("LabelSettings_vg6r5")
+
+[node name="Increase flap amount" type="Button" parent="Flaps"]
+offset_left = 83.0
+offset_top = 367.0
+offset_right = 194.0
+offset_bottom = 398.0
+text = "Increase: €10"
+
+[node name="Swimming Ring" type="CanvasGroup" parent="."]
+position = Vector2(412, 3)
+
+[node name="Label" type="Label" parent="Swimming Ring"]
+offset_left = 76.0
+offset_top = 155.0
+offset_right = 158.0
+offset_bottom = 194.0
+text = "Swimming Ring"
+label_settings = SubResource("LabelSettings_cophi")
+
+[node name="Button" type="Button" parent="Swimming Ring"]
+offset_left = 78.0
+offset_top = 198.0
+offset_right = 189.0
+offset_bottom = 229.0
+text = "Upgrade: €10"
+
+[connection signal="button_up" from="Flaps/Increase flap power" to="Flaps/Increase flap power" method="_on_button_up"]
