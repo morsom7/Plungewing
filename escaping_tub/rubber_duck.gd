@@ -9,8 +9,8 @@ var control_mode = BOTTLE_MODE
 @export var flaps_available: int = 1					# Flapping increases height and allows for more glide
 @export var swimming_rings_available: int = 0			# Gives a bounce if hits the water
 var is_attached_to_cannon: bool = true						# Checks if duck is launched
-
-
+@onready var bottle_duck_anchor: Node2D = $"../FatMan/FatMan_arm_pivot/Launcher/AnimatedSprite2D/Bottle_DuckAnchor"
+@onready var launcher: RigidBody2D = $"../FatMan/FatMan_arm_pivot/Launcher"
 
 var is_at_rest: bool = false
 
@@ -24,6 +24,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:		
 	if control_mode == BOTTLE_MODE:
 		global_position = bottle_duck_anchor.global_position
+		global_rotation = launcher.rotation
+		
 		if Input.is_action_just_pressed("launch"):
 			SignalBus.bottle_popped.emit()
 	if control_mode == DUCK_MODE:
