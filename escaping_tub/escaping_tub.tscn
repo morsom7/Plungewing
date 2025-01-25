@@ -83,6 +83,7 @@ radius = 16.0
 [node name="Bathwater" type="Node" parent="."]
 
 [node name="BathwaterArea" type="Area2D" parent="Bathwater" groups=["Bathwater"]]
+collision_mask = 2
 script = ExtResource("2_dwmuo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bathwater/BathwaterArea"]
@@ -123,6 +124,7 @@ shape = SubResource("CircleShape2D_hdaq6")
 
 [node name="RubberDuck" parent="." instance=ExtResource("1_67ee0")]
 position = Vector2(328, 432)
+collision_layer = 2
 flap_power = 1.0
 swimming_rings_available = 1
 is_gliding = true
@@ -153,4 +155,4 @@ offset_bottom = 1024.0
 texture = ExtResource("7_hx222")
 stretch_mode = 1
 
-[connection signal="body_entered" from="Bathwater/BathwaterArea" to="RubberDuck" method="_on_bathwater_area_body_entered"]
+[connection signal="body_entered" from="Bathwater/BathwaterArea" to="Bathwater/BathwaterArea" method="_on_body_entered"]

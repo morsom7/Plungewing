@@ -19,6 +19,7 @@ var is_at_rest: bool = false
 func _ready() -> void:	
 	SignalBus.duck_bubble_bounced.connect(bounce)
 	SignalBus.bottle_popped.connect(launch)
+	SignalBus.duck_hit_water.connect(duck_water_check)
 	global_position = bottle_duck_anchor.global_position
 	#test FMOD
 
@@ -38,10 +39,6 @@ func _physics_process(delta: float) -> void:
 				glide_up()
 			if Input.is_action_pressed("duck_glide_down"):
 				glide_down()
-
-func _notification(what):
-	if Input.is_action_just_pressed("exit_game"):
-		get_tree().quit() # default behavior
 
 func launch():
 	control_mode = DUCK_MODE
@@ -78,17 +75,19 @@ func glide_down() -> void:
 	pass
 	
 func bounce(bounce_power: float) -> void:
-	apply_impulse(Vector2(0,-linear_velocity.y * bounce_power))
-	swimming_rings_available -= 1
+	pass
 	
 func is_hit() -> void:
 	is_gliding = false
 	add_constant_torque(500)
 
-func _on_bathwater_area_body_entered(body: Node2D) -> void:
+func duck_water_check() -> void:
+	print("Duck_hit_water")
 	if swimming_rings_available > 0:
-		bounce(2)
+		apply_impulse(Vector2(0, 2 * -linear_velocity.y))
+		swimming_rings_available -= 1
 		return
+	SignalBus.duck_splash.emit()
 	linear_velocity = Vector2(0,0)
 	gravity_scale = 0
 	set_physics_process(false)

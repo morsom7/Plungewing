@@ -1,15 +1,6 @@
 extends Area2D
-@onready var rubber_duck: RigidBody2D = $"../../RubberDuck"
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	
+func _on_body_entered(body: Node2D) -> void:
+	print("body_entered")
+	SignalBus.duck_hit_water.emit()
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-
-
-	pass

@@ -12,6 +12,8 @@ signal bottle_popped
 
 # Rubber duck signals
 signal duck_flaps
+signal duck_hit_water
+signal duck_splash
 
 # Bubble signals
 signal duck_bubble_bounced(bounce_type:String)
