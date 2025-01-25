@@ -123,6 +123,12 @@ shape = SubResource("CircleShape2D_hdaq6")
 
 [node name="RubberDuck" parent="." instance=ExtResource("1_67ee0")]
 position = Vector2(328, 432)
+cannon_power = null
+flap_power = null
+flaps_available = null
+swimming_rings_available = null
+glide_power = null
+is_gliding = true
 metadata/_edit_lock_ = true
 
 [node name="Bathtub" type="Node" parent="."]
@@ -149,3 +155,5 @@ offset_right = 49944.0
 offset_bottom = 1024.0
 texture = ExtResource("7_hx222")
 stretch_mode = 1
+
+[connection signal="body_entered" from="Bathwater/BathwaterArea" to="RubberDuck" method="_on_bathwater_area_body_entered"]

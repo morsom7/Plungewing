@@ -13,6 +13,7 @@ signal bottle_popped
 # Rubber duck signals
 signal duck_stops_moving
 signal duck_flaps
+signal duck_splash
 
 # Bubble signals
 signal duck_bubble_bounced(bounce_power:float, bounce_type:String)

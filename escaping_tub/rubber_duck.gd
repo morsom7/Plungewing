@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 				glide_up()
 			if Input.is_action_pressed("duck_glide_down"):
 				glide_down()
-			
+		
 		pass
 	
 	# Checking if movements stops
@@ -66,13 +66,16 @@ func flap() -> void:
 	pass
 
 func glide_up() -> void:
-	
+	apply_impulse(Vector2(0,-glide_power * 100))
+	global_rotation_degrees = -15
 	# add slight upwards force to counteract gravity
 	# play animation
 	# play sound	
 	pass
 	
 func glide_down() -> void:
+	apply_impulse(Vector2(0,glide_power * 100))
+	global_rotation_degrees = 15
 	# add slight upwards force to counteract gravity
 	# play animation
 	# play sound	
@@ -83,4 +86,6 @@ func bounce(bounce_power: float) -> void:
 	
 func is_hit() -> void:
 	is_gliding = false
-	add_constant_torque(5)
+	add_constant_torque(500)
+	
+func duck_splash()
