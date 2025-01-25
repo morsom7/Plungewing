@@ -5,7 +5,7 @@ var control_mode = BOTTLE_MODE
 @onready var Launcher = $Launcher
 @export var shake_force: int = 150
 @onready var fat_man_arm_pivot: Node2D = $FatMan_arm_pivot
-
+@onready var Bottle_DuckAnchor :Node2D = $FatMan_arm_pivot/Launcher/Bottle/Bottle_DuckAnchor
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

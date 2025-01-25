@@ -1,18 +1,14 @@
 extends RigidBody2D
 
 enum {BOTTLE_MODE, DUCK_MODE}
-var control_mode = BOTTLE_MODE
+var control_mode = BOTTLE_MODE		# Starting mode
 
 # Upgradables
 @export var cannon_power: float = 1.0 					# Substitute for cannon
 @export var flap_power: float = 1						# Strength of the flap
 @export var flaps_available: int = 1					# Flapping increases height and allows for more glide
 @export var swimming_rings_available: int = 0			# Gives a bounce if hits the water
-var is_attached_to_cannon: bool = true						# Checks if duck is launched
-
-
-
-var is_at_rest: bool = false
+@onready var bottle_duck_anchor : Node2D = $"../FatMan".Bottle_DuckAnchor
 
 func _ready() -> void:	
 	SignalBus.duck_flaps.connect(flap)	# When signal "duck_flaps" is triggered, it calls the function "flap()"

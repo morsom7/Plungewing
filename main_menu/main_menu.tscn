@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cgq10ucey1kka"]
 
-[ext_resource type="Texture2D" uid="uid://cs5am3t38neai" path="res://graphics/BG_bad.png" id="1_dooi2"]
+[ext_resource type="Texture2D" uid="uid://dp5sdsdh3n2ef" path="res://graphics/BG_bad.png" id="1_dooi2"]
 [ext_resource type="Script" path="res://main_menu/main_menu.gd" id="1_wxe0o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wq15d"]

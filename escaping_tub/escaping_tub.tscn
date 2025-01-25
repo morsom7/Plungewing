@@ -103,21 +103,23 @@ texture = ExtResource("5_qymea")
 position = Vector2(64, 512)
 node_a = NodePath("../StaticBody2D")
 node_b = NodePath("Launcher")
+angular_limit_enabled = true
+angular_limit_lower = -0.523599
+angular_limit_upper = 0.523599
 
 [node name="Launcher" type="RigidBody2D" parent="FatMan/FatMan_arm_pivot"]
 position = Vector2(-64, -512)
 angular_damp = 100.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FatMan/FatMan_arm_pivot/Launcher"]
+[node name="Bottle" type="AnimatedSprite2D" parent="FatMan/FatMan_arm_pivot/Launcher"]
 position = Vector2(264, 496)
 rotation = 0.785397
 sprite_frames = SubResource("SpriteFrames_so465")
 animation = &"bottle_shake"
 frame_progress = 0.318222
 
-[node name="Bottle_DuckAnchor" type="Node2D" parent="FatMan/FatMan_arm_pivot/Launcher/AnimatedSprite2D"]
+[node name="Bottle_DuckAnchor" type="Node2D" parent="FatMan/FatMan_arm_pivot/Launcher/Bottle"]
 position = Vector2(0, -90.5092)
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FatMan/FatMan_arm_pivot/Launcher"]
 position = Vector2(248, 512)
@@ -131,8 +133,4 @@ shape = SubResource("CircleShape2D_lbv6x")
 
 [node name="RubberDuck" parent="." instance=ExtResource("1_67ee0")]
 position = Vector2(328, 432)
-cannon_power = null
-flap_power = null
-flaps_available = null
-swimming_rings_available = null
 metadata/_edit_lock_ = true
