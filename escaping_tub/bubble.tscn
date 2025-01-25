@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://77vouj2k2qr0"]
+
+[ext_resource type="Script" path="res://escaping_tub/bubble.gd" id="1_1j67c"]
+[ext_resource type="Texture2D" uid="uid://ho065e04d3bu" path="res://graphics/Bade_and_skisser.png" id="2_4pl04"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4glig"]
+
+[node name="Bubble" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_1j67c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4glig")
+
+[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4pl04")
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://audio/Master.strings.bank", "res://audio/Master.bank", "res://audio/SFX.bank"]
+
+[node name="SFX_bubble_pop" type="FmodEventEmitter2D" parent="FmodBankLoader"]
+event_name = "event:/Bottle_PopLvl1"
+event_guid = "{b4338d9c-af3e-4a0f-b9ad-d9cd3adfe29d}"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="stopped" from="FmodBankLoader/SFX_bubble_pop" to="." method="_on_sfx_bubble_pop_stopped"]

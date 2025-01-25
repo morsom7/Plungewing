@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://o30d3lr56ufc"]
+
+[ext_resource type="Script" path="res://escaping_tub/bubble_area.gd" id="1_1fr84"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7tka"]
+size = Vector2(1052, 532)
+
+[node name="BubbleArea" type="CollisionShape2D"]
+shape = SubResource("RectangleShape2D_w7tka")
+script = ExtResource("1_1fr84")

@@ -19,6 +19,8 @@ func _ready() -> void:
 	SignalBus.open_main_menu.connect(load_main_menu)
 	SignalBus.next_escape_attempt.connect(load_scene_escape_attempt)
 	SignalBus.open_shop.connect(load_shop_scene)
+	SignalBus.duck_bubble_bounced.connect(bubble_bounced)
+	SignalBus.duck_splash.connect(duck_splashed)
 
 func load_main_menu() -> void:
 	get_tree().change_scene_to_file(main_menu_scene)
@@ -39,7 +41,7 @@ func get_upgrade_level_as_string(level):
 
 func upgrade_bottle(cost) -> bool:
 	CURRENCY -= cost
-	SignalBus.purchase_made.emit(cost)
+	SignalBus.currency_updated.emit(cost)
 	BOTTLE_LEVEL = (BOTTLE_LEVEL + 1 as UPGRADE_LEVEL)
 	if BOTTLE_LEVEL == UPGRADE_LEVEL.MAX:
 		return true
@@ -48,7 +50,7 @@ func upgrade_bottle(cost) -> bool:
 
 func increase_flap_power(cost) -> bool:
 	CURRENCY -= cost
-	SignalBus.purchase_made.emit(cost)
+	SignalBus.currency_updated.emit(cost)
 	FLAP_POWER = (FLAP_POWER + 1 as UPGRADE_LEVEL)
 	if FLAP_POWER == UPGRADE_LEVEL.MAX:
 		return true
@@ -57,10 +59,22 @@ func increase_flap_power(cost) -> bool:
 
 func increase_flap_amount(cost) -> void:
 	CURRENCY -= cost
-	SignalBus.purchase_made.emit(cost)
+	SignalBus.currency_updated.emit(cost)
 	FLAP_AMOUNT += 1
 
 func increase_swimming_rings(cost) -> void:
 	CURRENCY -= cost
-	SignalBus.purchase_made.emit(cost)
+	SignalBus.currency_updated.emit(cost)
 	SWIMMING_RINGS += 1
+
+func bubble_bounced(bubble_type) ->void:
+	if bubble_type == "normal":
+		CURRENCY += 1
+		SignalBus.currency_updated.emit()
+	if bubble_type == "super":
+		CURRENCY += 2
+		SignalBus.currency_updated.emit()
+	
+func duck_splashed() -> void:
+	pass
+	# pop-up menu for shop / go again
