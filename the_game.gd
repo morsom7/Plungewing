@@ -46,6 +46,5 @@ func load_shop_scene() -> void:
 	get_tree().change_scene_to_packed(shop_scene)
 	remove_child(current_scene)
 	current_scene = shop_scene
-	
 	# Play music
-	$FmodBankLoader/FmodEventEmitter2D.event_guid("{50a1135f-f746-4b0e-8a78-2253afaaf22c}")
+	

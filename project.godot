@@ -45,6 +45,11 @@ SoundSingleton="*res://sound_singleton.gd"
 
 gdscript/warnings/unused_signal=0
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
