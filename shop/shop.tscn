@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bfqhknauj8snl"]
+[gd_scene load_steps=13 format=3 uid="uid://bfqhknauj8snl"]
 
 [ext_resource type="Script" path="res://shop/currency.gd" id="1_8tb5v"]
 [ext_resource type="Script" path="res://shop/increase_flap_power.gd" id="1_psjwu"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://shop/upgrade_bottle.gd" id="3_u4nti"]
 [ext_resource type="Script" path="res://shop/increase_flap_amount.gd" id="4_241jp"]
 [ext_resource type="Script" path="res://shop/increase_swimming_ring.gd" id="5_q5oxt"]
+[ext_resource type="Texture2D" uid="uid://dq8173d18i63" path="res://graphics/shop_bg.png" id="7_p551f"]
 
 [sub_resource type="GDScript" id="GDScript_j71i7"]
 script/source = "extends Control
@@ -16,16 +17,16 @@ script/source = "extends Control
 font_size = 48
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_j060h"]
-font_size = 24
-font_color = Color(0, 0, 0, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_cophi"]
 font_size = 28
 outline_size = 7
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vg6r5"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j060h"]
+font_size = 24
 font_color = Color(0, 0, 0, 1)
 
 [node name="Shop" type="Control"]
@@ -37,47 +38,25 @@ grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_j71i7")
 
-[node name="Background" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 37.0
-offset_top = 40.0
-offset_right = 1036.0
-offset_bottom = 590.0
+[node name="ShopCanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Title" type="Label" parent="."]
-layout_mode = 0
-offset_left = 68.0
-offset_top = 57.0
-offset_right = 184.0
-offset_bottom = 124.0
-text = "Shop
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopCanvasLayer"]
+offset_top = 96.0
+offset_right = 1920.0
+offset_bottom = 168.0
+
+[node name="Title" type="Label" parent="ShopCanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Ducky's Magic Cabinet
 "
 label_settings = SubResource("LabelSettings_8bev2")
 
-[node name="Currency" type="Label" parent="."]
-layout_mode = 1
-offset_left = 72.0
-offset_top = 123.0
-offset_right = 245.0
-offset_bottom = 157.0
-text = "Currency: 9999"
-label_settings = SubResource("LabelSettings_j060h")
-script = ExtResource("1_8tb5v")
+[node name="Bottle" type="CanvasGroup" parent="ShopCanvasLayer"]
+position = Vector2(696, 664)
+metadata/_edit_group_ = true
 
-[node name="NextAttempt" type="Button" parent="."]
-layout_mode = 0
-offset_left = 486.0
-offset_top = 71.0
-offset_right = 671.0
-offset_bottom = 125.0
-text = "Click here to start your
-Next Escape Attempt"
-script = ExtResource("2_d6d5h")
-
-[node name="Bottle" type="CanvasGroup" parent="."]
-position = Vector2(0, 44)
-
-[node name="Type" type="Label" parent="Bottle"]
+[node name="Type" type="Label" parent="ShopCanvasLayer/Bottle"]
 offset_left = 76.0
 offset_top = 155.0
 offset_right = 158.0
@@ -85,7 +64,7 @@ offset_bottom = 194.0
 text = "Bottle"
 label_settings = SubResource("LabelSettings_cophi")
 
-[node name="Upgrade bottle" type="Button" parent="Bottle"]
+[node name="Upgrade bottle" type="Button" parent="ShopCanvasLayer/Bottle"]
 offset_left = 78.0
 offset_top = 236.0
 offset_right = 189.0
@@ -93,17 +72,19 @@ offset_bottom = 267.0
 text = "Upgrade: €10"
 script = ExtResource("3_u4nti")
 
-[node name="Power" type="Label" parent="Bottle/Upgrade bottle"]
+[node name="Power" type="Label" parent="ShopCanvasLayer/Bottle/Upgrade bottle"]
+layout_mode = 0
 offset_top = -28.0
 offset_right = 89.0
 offset_bottom = -5.0
 text = "Power: Low"
 label_settings = SubResource("LabelSettings_vg6r5")
 
-[node name="Flaps" type="CanvasGroup" parent="."]
-position = Vector2(204, 46)
+[node name="Flaps" type="CanvasGroup" parent="ShopCanvasLayer"]
+position = Vector2(1104, 576)
+metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="Flaps"]
+[node name="Label" type="Label" parent="ShopCanvasLayer/Flaps"]
 offset_left = 76.0
 offset_top = 155.0
 offset_right = 158.0
@@ -111,7 +92,7 @@ offset_bottom = 194.0
 text = "Flaps"
 label_settings = SubResource("LabelSettings_cophi")
 
-[node name="Increase flap power" type="Button" parent="Flaps"]
+[node name="Increase flap power" type="Button" parent="ShopCanvasLayer/Flaps"]
 offset_left = 82.0
 offset_top = 234.0
 offset_right = 193.0
@@ -119,7 +100,7 @@ offset_bottom = 265.0
 text = "Upgrade: €10"
 script = ExtResource("1_psjwu")
 
-[node name="Power" type="Label" parent="Flaps/Increase flap power"]
+[node name="Power" type="Label" parent="ShopCanvasLayer/Flaps/Increase flap power"]
 layout_mode = 0
 offset_top = -28.0
 offset_right = 89.0
@@ -127,7 +108,7 @@ offset_bottom = -5.0
 text = "Power: Low"
 label_settings = SubResource("LabelSettings_vg6r5")
 
-[node name="Increase flap amount" type="Button" parent="Flaps"]
+[node name="Increase flap amount" type="Button" parent="ShopCanvasLayer/Flaps"]
 offset_left = 83.0
 offset_top = 318.0
 offset_right = 194.0
@@ -135,7 +116,7 @@ offset_bottom = 349.0
 text = "Increase: €10"
 script = ExtResource("4_241jp")
 
-[node name="Amount" type="Label" parent="Flaps/Increase flap amount"]
+[node name="Amount" type="Label" parent="ShopCanvasLayer/Flaps/Increase flap amount"]
 layout_mode = 0
 offset_top = -36.0
 offset_right = 63.0
@@ -143,10 +124,11 @@ offset_bottom = -13.0
 text = "Amount"
 label_settings = SubResource("LabelSettings_vg6r5")
 
-[node name="Swimming Ring" type="CanvasGroup" parent="."]
-position = Vector2(412, 47)
+[node name="Swimming Ring" type="CanvasGroup" parent="ShopCanvasLayer"]
+position = Vector2(776, 448)
+metadata/_edit_group_ = true
 
-[node name="SwimmingRing" type="Label" parent="Swimming Ring"]
+[node name="SwimmingRing" type="Label" parent="ShopCanvasLayer/Swimming Ring"]
 offset_left = 76.0
 offset_top = 155.0
 offset_right = 283.0
@@ -154,7 +136,7 @@ offset_bottom = 194.0
 text = "Swimming Ring"
 label_settings = SubResource("LabelSettings_cophi")
 
-[node name="Increase swimming ring" type="Button" parent="Swimming Ring"]
+[node name="Increase swimming ring" type="Button" parent="ShopCanvasLayer/Swimming Ring"]
 offset_left = 78.0
 offset_top = 233.0
 offset_right = 189.0
@@ -162,15 +144,52 @@ offset_bottom = 264.0
 text = "Upgrade: €10"
 script = ExtResource("5_q5oxt")
 
-[node name="Amount" type="Label" parent="Swimming Ring/Increase swimming ring"]
+[node name="Amount" type="Label" parent="ShopCanvasLayer/Swimming Ring/Increase swimming ring"]
+layout_mode = 0
 offset_top = -27.0
 offset_right = 63.0
 offset_bottom = -4.0
 text = "Amount"
 label_settings = SubResource("LabelSettings_vg6r5")
 
-[connection signal="button_up" from="NextAttempt" to="NextAttempt" method="_on_button_up"]
-[connection signal="button_up" from="Bottle/Upgrade bottle" to="Bottle/Upgrade bottle" method="_on_button_up"]
-[connection signal="button_up" from="Flaps/Increase flap power" to="Flaps/Increase flap power" method="_on_button_up"]
-[connection signal="button_up" from="Flaps/Increase flap amount" to="Flaps/Increase flap amount" method="_on_button_up"]
-[connection signal="button_up" from="Swimming Ring/Increase swimming ring" to="Swimming Ring/Increase swimming ring" method="_on_button_up"]
+[node name="Currency" type="Label" parent="ShopCanvasLayer"]
+offset_left = 1376.0
+offset_top = 384.0
+offset_right = 1552.0
+offset_bottom = 424.0
+text = "Currency: 9999"
+label_settings = SubResource("LabelSettings_j060h")
+script = ExtResource("1_8tb5v")
+
+[node name="NextAttempt" type="Button" parent="ShopCanvasLayer"]
+offset_left = 1368.0
+offset_top = 440.0
+offset_right = 1553.0
+offset_bottom = 494.0
+text = "Click here to start your
+Next Escape Attempt"
+script = ExtResource("2_d6d5h")
+
+[node name="Background" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 37.0
+offset_top = 40.0
+offset_right = 1036.0
+offset_bottom = 590.0
+
+[node name="Background_shop" type="TextureRect" parent="."]
+z_index = -10
+texture_filter = 1
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("7_p551f")
+expand_mode = 2
+metadata/_edit_lock_ = true
+
+[connection signal="button_up" from="ShopCanvasLayer/Bottle/Upgrade bottle" to="ShopCanvasLayer/Bottle/Upgrade bottle" method="_on_button_up"]
+[connection signal="button_up" from="ShopCanvasLayer/Flaps/Increase flap power" to="ShopCanvasLayer/Flaps/Increase flap power" method="_on_button_up"]
+[connection signal="button_up" from="ShopCanvasLayer/Flaps/Increase flap amount" to="ShopCanvasLayer/Flaps/Increase flap amount" method="_on_button_up"]
+[connection signal="button_up" from="ShopCanvasLayer/Swimming Ring/Increase swimming ring" to="ShopCanvasLayer/Swimming Ring/Increase swimming ring" method="_on_button_up"]
+[connection signal="button_up" from="ShopCanvasLayer/NextAttempt" to="ShopCanvasLayer/NextAttempt" method="_on_button_up"]

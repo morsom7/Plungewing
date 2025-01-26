@@ -1,5 +1,7 @@
 extends Node2D
 @onready var end_run_screen_canvas: CanvasGroup = $end_run_screen_canvas
+@onready var stats_label_distance: Label = $end_run_screen_canvas/ScreenSpace/StatsVertical/StatsCenter/StatsPanel/StatsLabelDistance
+@onready var rubber_duck: RigidBody2D = %RubberDuck
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,6 +19,7 @@ func _process(delta: float) -> void:
 
 func end_run_screen():
 	end_run_screen_canvas.visible = true
+	stats_label_distance.text = str(int(rubber_duck.global_position.x/100))
 	pass
 
 

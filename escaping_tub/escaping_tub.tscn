@@ -127,6 +127,7 @@ position = Vector2(248, 512)
 shape = SubResource("CircleShape2D_hdaq6")
 
 [node name="RubberDuck" parent="." instance=ExtResource("1_67ee0")]
+unique_name_in_owner = true
 position = Vector2(328, 432)
 flap_power = 1.0
 swimming_rings_available = 1
