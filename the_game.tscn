@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://byip8dxh07eh4"]
+[gd_scene load_steps=2 format=3 uid="uid://byip8dxh07eh4"]
 
 [ext_resource type="Script" path="res://the_game.gd" id="1_gddlr"]
-[ext_resource type="PackedScene" uid="uid://bncrphwj5khhg" path="res://escaping_tub/hud.tscn" id="2_40nc1"]
 
 [node name="TheGame" type="Node2D"]
 script = ExtResource("1_gddlr")
@@ -15,5 +14,3 @@ event_guid = "{e8d1d888-1ec6-4ea4-b767-fc0f9d329874}"
 autoplay = true
 
 [node name="FmodListener2D" type="FmodListener2D" parent="FmodBankLoader/FmodEventEmitter2D"]
-
-[node name="HUD" parent="." instance=ExtResource("2_40nc1")]
