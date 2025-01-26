@@ -24,6 +24,7 @@ func _ready() -> void:
 	SignalBus.bottle_popped.connect(launch)
 	SignalBus.duck_hit_water.connect(duck_water_check)
 	SignalBus.duck_bubble_bounced.connect(bounce)
+	
 	self.global_position = bottle_duck_anchor.global_position
 	#test FMOD
 

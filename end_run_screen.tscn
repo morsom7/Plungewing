@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://be08fihj3ka8b"]
+
+[node name="end_run_screen" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ScreenSpace" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+
+[node name="RetryVertical" type="VBoxContainer" parent="ScreenSpace"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -88.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RetryCenter" type="CenterContainer" parent="ScreenSpace/RetryVertical"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="RetryPanel" type="Panel" parent="ScreenSpace/RetryVertical/RetryCenter"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+
+[node name="RetryButton" type="Button" parent="ScreenSpace/RetryVertical/RetryCenter/RetryPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "RETRY"
+
+[node name="HomeVertical" type="VBoxContainer" parent="ScreenSpace"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -24.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HomeCenter" type="CenterContainer" parent="ScreenSpace/HomeVertical"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HomePanel" type="Panel" parent="ScreenSpace/HomeVertical/HomeCenter"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+
+[node name="HomeButton" type="Button" parent="ScreenSpace/HomeVertical/HomeCenter/HomePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "HOME"
+
+[node name="QuitVertical" type="VBoxContainer" parent="ScreenSpace"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 40.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QuitCenter" type="CenterContainer" parent="ScreenSpace/QuitVertical"]
+layout_mode = 2
+
+[node name="QuitPanel" type="Panel" parent="ScreenSpace/QuitVertical/QuitCenter"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="ScreenSpace/QuitVertical/QuitCenter/QuitPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "QUIT"
+
+[node name="StatsVertical" type="VBoxContainer" parent="ScreenSpace"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -668.0
+grow_horizontal = 2
+grow_vertical = 2

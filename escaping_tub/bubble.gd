@@ -21,6 +21,7 @@ func _on_body_entered(body: Node) -> void:
 	print("Bubble popped")
 	SignalBus.duck_bubble_bounced.emit(bubble_type)
 	_animated_sprite.play("pop")
+	
 	# play animation -> animation + fade
 	$FmodBankLoader/SFX_bubble_pop.play_one_shot()
 	$Timer.start()
