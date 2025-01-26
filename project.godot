@@ -39,15 +39,11 @@ config/icon="res://icon.svg"
 FmodManager="*res://addons/fmod/FmodManager.gd"
 SignalBus="*res://signal_bus.gd"
 GameManager="*res://game_manager.gd"
+SoundSingleton="*res://sound_singleton.gd"
 
 [debug]
 
 gdscript/warnings/unused_signal=0
-
-[display]
-
-window/size/viewport_width=1920
-window/size/viewport_height=1080
 
 [editor_plugins]
 

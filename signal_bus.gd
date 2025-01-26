@@ -2,8 +2,11 @@ extends Node
 # Always loaded files gobally available: https://docs.godotengine.org/en/stable/tutorials/scripting/singletons_autoload.html
 
 # GameManager
+signal button_click
 signal open_main_menu
 signal next_escape_attempt
+signal ui_go		# starting escape_attempt from different scene
+signal ui_retry		# for retry while escape_attempt is active scene
 signal open_shop
 signal currency_updated(cost)
 
