@@ -15,7 +15,7 @@ func connect_signals() ->void:
 	SignalBus.open_shop.connect(load_shop_scene)
 	# SFX in tub escape
 	SignalBus.bottle_popped.connect(pop_the_bottle)
-	SignalBus.duck_bubble_bounced.connect(bubble_bounce)
+	SignalBus.duck_bubble_bounced.connect(bubble_bounced)
 	SignalBus.duck_flaps.connect(duck_flapping)
 	SignalBus.duck_splash.connect(duck_splashing)
 
@@ -31,7 +31,8 @@ func retry_escape_attempt() -> void: play_sound("event:/UI/UI_Retry")
 func load_shop_scene() -> void: play_sound("event:/UI/UI_Shop")
 
 func pop_the_bottle() -> void: play_sound("event:/SFX/Bottle_PopLvl1")
-func bubble_bounce() -> void: play_sound("event:/SFX/Object/Object_Bounce")
+#func bubble_bounced(bounce_type:String) -> void: play_sound("event:/SFX/Bottle_PopLvl1")
+func bubble_bounced(bounce_type:String) -> void: play_sound("event:/SFX/Object/Object_Bounce")
 func duck_flapping() -> void: play_sound("event:/SFX/Duck/Duck_Flap")
 func duck_splashing() -> void: play_sound("event:/SFX/Duck/Duck_Death")
 

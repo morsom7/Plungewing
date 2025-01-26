@@ -1,6 +1,6 @@
 extends Button
 
-@onready var label = $Type				# UPDATE!!!
+@onready var label = $Power				# UPDATE!!!
 var cost = [350, 1000]
 
 func _ready() -> void:
