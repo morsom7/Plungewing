@@ -16,7 +16,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	global_rotation_degrees = 0
-	global_position = Vector2(rubber_duck.global_position.x,rubber_duck.global_position.y)
+	
 	
 	pass
 
