@@ -15,35 +15,151 @@ font_color = Color(0, 0, 0, 1)
 script = ExtResource("1_wxe0o")
 
 [node name="Background" type="TextureRect" parent="."]
+z_index = -10
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_dooi2")
+stretch_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+z_index = 20
+position = Vector2(960, 540)
+
+[node name="CanvasMenu" type="CanvasGroup" parent="."]
+
+[node name="MainMenu" type="Control" parent="CanvasMenu"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Header" type="CenterContainer" parent="CanvasMenu/MainMenu"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -476.0
+offset_bottom = -348.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="CanvasMenu/MainMenu/Header"]
+layout_mode = 2
+text = "Plungewing McAquaQuack"
+label_settings = SubResource("LabelSettings_wq15d")
+horizontal_alignment = 1
+
+[node name="RetryVertical" type="VBoxContainer" parent="CanvasMenu/MainMenu"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -22.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RetryCenter" type="CenterContainer" parent="CanvasMenu/MainMenu/RetryVertical"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="RetryPanel" type="Panel" parent="CanvasMenu/MainMenu/RetryVertical/RetryCenter"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="RetryButton" type="Button" parent="CanvasMenu/MainMenu/RetryVertical/RetryCenter/RetryPanel"]
+z_index = 5
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_dooi2")
-stretch_mode = 1
+text = "New Run"
 
-[node name="Title" type="Label" parent="."]
-offset_left = 64.0
-offset_top = 81.0
-offset_right = 1852.0
-offset_bottom = 180.0
-text = "Plungewing McAquaQuack"
-label_settings = SubResource("LabelSettings_wq15d")
-horizontal_alignment = 1
+[node name="ShopVertical" type="VBoxContainer" parent="CanvasMenu/MainMenu"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 576.0
+offset_bottom = -440.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Button" type="Button" parent="."]
-offset_left = 439.0
-offset_top = 273.0
-offset_right = 656.0
-offset_bottom = 304.0
-text = "Make Your Escape Attempt"
+[node name="ShopCenter" type="CenterContainer" parent="CanvasMenu/MainMenu/ShopVertical"]
+layout_mode = 2
+size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="."]
-offset_left = 420.0
-offset_top = 348.0
-offset_right = 675.0
-offset_bottom = 500.0
+[node name="ShopPanel" type="Panel" parent="CanvasMenu/MainMenu/ShopVertical/ShopCenter"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="ShopButton" type="Button" parent="CanvasMenu/MainMenu/ShopVertical/ShopCenter/ShopPanel"]
+z_index = 5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
+text = "Shop"
+
+[node name="QuitVertical" type="VBoxContainer" parent="CanvasMenu/MainMenu"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 108.0
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QuitCenter" type="CenterContainer" parent="CanvasMenu/MainMenu/QuitVertical"]
+layout_mode = 2
+
+[node name="QuitPanel" type="Panel" parent="CanvasMenu/MainMenu/QuitVertical/QuitCenter"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="QuitButton" type="Button" parent="CanvasMenu/MainMenu/QuitVertical/QuitCenter/QuitPanel"]
+z_index = 5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[node name="Contributers" type="CenterContainer" parent="CanvasMenu/MainMenu"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 300.0
+offset_bottom = 483.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasMenu/MainMenu/Contributers"]
+layout_mode = 2
 text = "Made by the QuadQuacks:
 Simen, Joakim, Oliver
 Elias, Kristian
@@ -53,4 +169,6 @@ Theme: \"Bubble\""
 label_settings = SubResource("LabelSettings_jgggh")
 horizontal_alignment = 1
 
-[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="CanvasMenu/MainMenu/RetryVertical/RetryCenter/RetryPanel/RetryButton" to="." method="_on_retry_button_button_up"]
+[connection signal="button_up" from="CanvasMenu/MainMenu/ShopVertical/ShopCenter/ShopPanel/ShopButton" to="." method="_on_shop_button_button_up"]
+[connection signal="button_up" from="CanvasMenu/MainMenu/QuitVertical/QuitCenter/QuitPanel/QuitButton" to="." method="_on_quit_button_button_up"]
