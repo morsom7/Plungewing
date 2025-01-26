@@ -21,6 +21,7 @@ func _process(delta: float) -> void:
 	pass
 
 func end_run_screen():
+	global_position.y = 540
 	end_run_screen_canvas.visible = true
 	pass
 
@@ -39,4 +40,10 @@ func _on_home_button_pressed() -> void:
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+	pass # Replace with function body.
+
+
+func _on_shop_button_pressed() -> void:
+	print("Shop")
+	SignalBus.open_shop.emit()
 	pass # Replace with function body.

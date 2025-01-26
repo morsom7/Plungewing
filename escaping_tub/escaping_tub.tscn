@@ -148,7 +148,6 @@ polygon = PackedVector2Array(0, 704, 50000, 704, 50000, 1152, 0, 1152)
 [node name="BathWall" type="Node" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="BathWall"]
-visible = false
 z_index = -5
 texture_filter = 1
 offset_left = -256.0

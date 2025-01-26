@@ -22,8 +22,8 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -88.0
-offset_bottom = -38.0
+offset_top = -154.0
+offset_bottom = -104.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -43,6 +43,35 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "RETRY"
+
+[node name="ShopVertical" type="VBoxContainer" parent="end_run_screen_canvas/ScreenSpace"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -90.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShopCenter" type="CenterContainer" parent="end_run_screen_canvas/ScreenSpace/ShopVertical"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ShopPanel" type="Panel" parent="end_run_screen_canvas/ScreenSpace/ShopVertical/ShopCenter"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+
+[node name="ShopButton" type="Button" parent="end_run_screen_canvas/ScreenSpace/ShopVertical/ShopCenter/ShopPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SHOP"
 
 [node name="HomeVertical" type="VBoxContainer" parent="end_run_screen_canvas/ScreenSpace"]
 custom_minimum_size = Vector2(0, 50)
@@ -131,5 +160,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="end_run_screen_canvas/ScreenSpace/RetryVertical/RetryCenter/RetryPanel/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="end_run_screen_canvas/ScreenSpace/ShopVertical/ShopCenter/ShopPanel/ShopButton" to="." method="_on_shop_button_pressed"]
 [connection signal="pressed" from="end_run_screen_canvas/ScreenSpace/HomeVertical/HomeCenter/HomePanel/HomeButton" to="." method="_on_home_button_pressed"]
 [connection signal="pressed" from="end_run_screen_canvas/ScreenSpace/QuitVertical/QuitCenter/QuitPanel/QuitButton" to="." method="_on_quit_button_pressed"]
