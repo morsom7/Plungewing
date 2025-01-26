@@ -33,7 +33,7 @@ func load_shop_scene() -> void: play_sound("event:/UI/UI_Shop", true)
 func pop_the_bottle() -> void: play_sound("event:/SFX/Bottle_PopLvl1")
 #func bubble_bounced(bounce_type:String) -> void: play_sound("event:/SFX/Bottle_PopLvl1")
 func bubble_bounced(bounce_type:String) -> void: play_sound("event:/SFX/Object/Object_Bounce")
-func duck_flapping() -> void: play_sound("event:/SFX/Duck/Duck_Flap")
+func duck_flapping(remaining: int) -> void: play_sound("event:/SFX/Duck/Duck_Flap")
 func duck_splashing() -> void: play_sound("event:/SFX/Duck/Duck_Death")
 
 
