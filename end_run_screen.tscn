@@ -5,8 +5,6 @@
 [node name="end_run_screen" type="Node2D"]
 script = ExtResource("1_l4jct")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="end_run_screen_canvas" type="CanvasGroup" parent="."]
 
 [node name="ScreenSpace" type="Control" parent="end_run_screen_canvas"]
