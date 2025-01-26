@@ -61,5 +61,6 @@ func bubble_bounced(bubble_type) ->void:
 		SignalBus.currency_updated.emit()
 	
 func duck_splashed() -> void:
+	
 	pass
 	# pop-up menu for shop / go again
