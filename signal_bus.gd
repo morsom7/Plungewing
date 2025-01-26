@@ -14,9 +14,10 @@ signal currency_updated(cost)
 signal bottle_popped
 
 # Rubber duck signals
-signal duck_flaps
+signal duck_flaps(remaining: int)
 signal duck_hit_water
 signal duck_splash
+signal duck_swimming_rings_remaining(remaining: int)
 
 # Bubble signals
 signal duck_bubble_bounced(bounce_type:String)

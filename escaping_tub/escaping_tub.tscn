@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c2cxwo00kftak"]
+[gd_scene load_steps=24 format=3 uid="uid://c2cxwo00kftak"]
 
 [ext_resource type="PackedScene" uid="uid://bj7a2ak2p80u0" path="res://escaping_tub/rubber_duck.tscn" id="1_67ee0"]
 [ext_resource type="Script" path="res://escaping_tub/fat_man.gd" id="2_6sijt"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://23ccbpdm5vbd" path="res://milestone.tscn" id="8_hwof7"]
 [ext_resource type="PackedScene" uid="uid://dbix2pmptn7vk" path="res://escaping_tub/bubble_spawner.tscn" id="9_dndk1"]
 [ext_resource type="Script" path="res://escaping_tub/camera_2d.gd" id="11_qq5du"]
+[ext_resource type="PackedScene" uid="uid://bncrphwj5khhg" path="res://escaping_tub/hud.tscn" id="12_6l84r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdft1"]
 size = Vector2(50480, 56)
@@ -193,5 +194,7 @@ visible = false
 z_index = 10
 color = Color(1, 1, 1, 0.278431)
 polygon = PackedVector2Array(-960, -540, 960, -540, 960, 540, -960, 540)
+
+[node name="HUD" parent="Camera2D/GameOverlay" instance=ExtResource("12_6l84r")]
 
 [connection signal="body_entered" from="Bathwater/BathwaterArea" to="Bathwater/BathwaterArea" method="_on_body_entered"]

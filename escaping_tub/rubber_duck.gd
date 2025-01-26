@@ -69,7 +69,7 @@ func flap() -> void:
 	if flaps_available > 0:
 		flaps_available -= 1
 		print("flap")
-		SignalBus.duck_flaps.emit() 
+		SignalBus.duck_flaps.emit(flaps_available) 
 		is_gliding = true
 		anim_duck.play("duck_anim_glide")
 		anim_duck.speed_scale = 1
@@ -123,6 +123,7 @@ func duck_water_check() -> void:
 	if swimming_rings_available > 0:
 		apply_impulse(Vector2(0, 2 * -linear_velocity.y))
 		swimming_rings_available -= 1
+		SignalBus.duck_swimming_rings_remaining.emit(swimming_rings_available)
 		return
 	SignalBus.duck_splash.emit()
 	linear_velocity = Vector2(0,0)

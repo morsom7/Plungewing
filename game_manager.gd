@@ -12,7 +12,6 @@ var FLAP_AMOUNT: int = 3			# Number of flaps to increase height
 var SWIMMING_RINGS: int = 0		# Gives a bounce if hits the water
 
 func _ready() -> void:
-
 	SignalBus.duck_bubble_bounced.connect(bubble_bounced)
 	SignalBus.duck_splash.connect(duck_splashed)
 
