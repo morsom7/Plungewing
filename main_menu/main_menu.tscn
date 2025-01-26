@@ -1,11 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgq10ucey1kka"]
+[gd_scene load_steps=8 format=3 uid="uid://cgq10ucey1kka"]
 
-[ext_resource type="Texture2D" uid="uid://dp5sdsdh3n2ef" path="res://graphics/BG_bad.png" id="1_dooi2"]
 [ext_resource type="Script" path="res://main_menu/main_menu.gd" id="1_wxe0o"]
+[ext_resource type="Texture2D" uid="uid://bnlqptyrifrn3" path="res://graphics/MainMenu_Background.png" id="2_kkyib"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wq15d"]
 font_size = 72
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qr860"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_color = Color(0.8, 0.8, 0.8, 0)
+shadow_color = Color(0.560955, 0.560955, 0.560955, 0)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ixyqe"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_color = Color(0.8, 0.8, 0.8, 0)
+shadow_color = Color(0.560955, 0.560955, 0.560955, 0)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djulb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_color = Color(0.8, 0.8, 0.8, 0)
+shadow_color = Color(0.560955, 0.560955, 0.560955, 0)
+anti_aliasing = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_jgggh"]
 font_size = 20
@@ -16,10 +34,10 @@ script = ExtResource("1_wxe0o")
 
 [node name="Background" type="TextureRect" parent="."]
 z_index = -10
+texture_filter = 1
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("1_dooi2")
-stretch_mode = 1
+texture = ExtResource("2_kkyib")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 20
@@ -50,6 +68,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Title" type="Label" parent="CanvasMenu/MainMenu/Header"]
+visible = false
 layout_mode = 2
 text = "Plungewing McAquaQuack"
 label_settings = SubResource("LabelSettings_wq15d")
@@ -62,8 +81,9 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -22.0
-offset_bottom = 28.0
+offset_top = -484.0
+offset_right = -576.0
+offset_bottom = -434.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -75,6 +95,7 @@ size_flags_vertical = 4
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_qr860")
 
 [node name="RetryButton" type="Button" parent="CanvasMenu/MainMenu/RetryVertical/RetryCenter/RetryPanel"]
 z_index = 5
@@ -92,8 +113,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 576.0
-offset_bottom = -440.0
+offset_top = 160.0
+offset_right = -464.0
+offset_bottom = -832.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -105,6 +127,7 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_ixyqe")
 
 [node name="ShopButton" type="Button" parent="CanvasMenu/MainMenu/ShopVertical/ShopCenter/ShopPanel"]
 z_index = 5
@@ -124,8 +147,9 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = 108.0
-offset_bottom = 164.0
+offset_top = -244.0
+offset_right = -384.0
+offset_bottom = -188.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -133,9 +157,11 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="QuitPanel" type="Panel" parent="CanvasMenu/MainMenu/QuitVertical/QuitCenter"]
+texture_filter = 1
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_djulb")
 
 [node name="QuitButton" type="Button" parent="CanvasMenu/MainMenu/QuitVertical/QuitCenter/QuitPanel"]
 z_index = 5
@@ -153,8 +179,10 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = 300.0
-offset_bottom = 483.0
+offset_left = 584.0
+offset_top = 44.0
+offset_right = -576.0
+offset_bottom = 227.0
 grow_horizontal = 2
 grow_vertical = 2
 
