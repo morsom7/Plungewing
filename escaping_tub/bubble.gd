@@ -21,15 +21,11 @@ func _on_body_entered(body: Node) -> void:
 	print("Bubble popped")
 	SignalBus.duck_bubble_bounced.emit(bubble_type)
 	_animated_sprite.play("pop")
-	_animated_sprite.animation_looped
 	# play animation -> animation + fade
 	$FmodBankLoader/SFX_bubble_pop.play_one_shot()
-
-#After bubble being popped and SFX stoppped playing, remove bubble:
-func _on_sfx_bubble_pop_stopped() -> void:
-	queue_free()
+	$Timer.start()
 
 
-func _on_animated_sprite_2d_animation_finished() -> void:
-	queue_free()
+func _on_timer_timeout() -> void:
+	print("times up!")
 	pass # Replace with function body.

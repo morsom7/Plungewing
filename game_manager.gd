@@ -1,8 +1,6 @@
 extends Node
 
-var main_menu_scene = "res://main_menu/main_menu.tscn"
-var escape_tub_scene = "res://escaping_tub/escaping_tub.tscn"
-var shop_scene = "res://shop/shop.tscn"
+
 
 # Player currency
 var CURRENCY: int = 10000
@@ -16,20 +14,10 @@ var FLAP_AMOUNT: int = 3			# Number of flaps to increase height
 var SWIMMING_RINGS: int = 0		# Gives a bounce if hits the water
 
 func _ready() -> void:
-	SignalBus.open_main_menu.connect(load_main_menu)
-	SignalBus.next_escape_attempt.connect(load_scene_escape_attempt)
-	SignalBus.open_shop.connect(load_shop_scene)
+
 	SignalBus.duck_bubble_bounced.connect(bubble_bounced)
 	SignalBus.duck_splash.connect(duck_splashed)
 
-func load_main_menu() -> void:
-	get_tree().change_scene_to_file(main_menu_scene)
-	
-func load_scene_escape_attempt() -> void:
-	get_tree().change_scene_to_file(escape_tub_scene)
-
-func load_shop_scene() -> void:
-	get_tree().change_scene_to_file(shop_scene)
 
 func get_upgrade_level_as_string(level):
 	match level:

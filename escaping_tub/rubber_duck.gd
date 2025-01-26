@@ -11,7 +11,7 @@ var control_mode = BOTTLE_MODE
 @export var glide_power: float = 1.0						# The amount glide affects trajectory
 @export var is_gliding: bool = false					# checks if duck is gliding
 var is_attached_to_cannon: bool = true						# Checks if duck is launched
-@onready var bottle_duck_anchor: Node2D = $"../FatMan/Launcher/AnimatedSprite2D/Bottle_DuckAnchor"
+@onready var bottle_duck_anchor: Node2D = $"../FatMan/Launcher/AnimBottleCola/Bottle_DuckAnchor"
 @onready var launcher: RigidBody2D = $"../FatMan/Launcher"
 @onready var anim_duck: AnimatedSprite2D = $AnimDuck
 @onready var anim_bottle_fizz: AnimatedSprite2D = $AnimBottleFizz
@@ -24,7 +24,7 @@ func _ready() -> void:
 	SignalBus.bottle_popped.connect(launch)
 	SignalBus.duck_hit_water.connect(duck_water_check)
 	SignalBus.duck_bubble_bounced.connect(bounce)
-	global_position = bottle_duck_anchor.global_position
+	self.global_position = bottle_duck_anchor.global_position
 	#test FMOD
 
 func _physics_process(delta: float) -> void:		

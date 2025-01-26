@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://orjofx74eone" path="res://graphics/bubble_3-Idle.png" id="4_rutci"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4glig"]
+radius = 29.05
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p4nam"]
 atlas = ExtResource("2_hbtox")
@@ -176,7 +177,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1rfah")
 }, {
-"duration": 1.0,
+"duration": 20.0,
 "texture": SubResource("AtlasTexture_rj4mg")
 }],
 "loop": true,
@@ -257,15 +258,17 @@ shape = SubResource("CircleShape2D_4glig")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_n0v4u")
-animation = &"normal"
+animation = &"pop"
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
 bank_paths = ["res://audio/Master.strings.bank", "res://audio/Master.bank", "res://audio/SFX.bank"]
 
 [node name="SFX_bubble_pop" type="FmodEventEmitter2D" parent="FmodBankLoader"]
-event_name = "event:/Bottle_PopLvl1"
+event_name = "event:/SFX/Bottle_PopLvl1"
 event_guid = "{b4338d9c-af3e-4a0f-b9ad-d9cd3adfe29d}"
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="stopped" from="FmodBankLoader/SFX_bubble_pop" to="." method="_on_sfx_bubble_pop_stopped"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

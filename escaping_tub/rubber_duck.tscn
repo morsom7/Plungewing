@@ -82,16 +82,17 @@ gravity_scale = 0.0
 script = ExtResource("1_w5k2q")
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://audio/Master.strings.bank", "res://audio/Master.bank", "res://audio/Music.bank", "res://audio/SFX.bank", "res://audio/UI.bank"]
 
 [node name="BackgroundMusic" type="FmodEventEmitter2D" parent="FmodBankLoader"]
-event_guid = "{cec9a28b-0003-0000-c191-c10505000000}"
+event_name = "event:/Music/Music_Level1"
+event_guid = "{50a1135f-f746-4b0e-8a78-2253afaaf22c}"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimDuck" type="AnimatedSprite2D" parent="."]
 z_index = 5
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_1r0y6")
-animation = &"duck_anim_idle"
-frame_progress = 0.28397
+animation = &"duck_anim_glide"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ggcmc")

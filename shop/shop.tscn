@@ -37,14 +37,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_j71i7")
 
-[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
-bank_paths = ["res://audio/Master.strings.bank", "res://audio/Master.bank", "res://audio/Music.bank", "res://audio/SFX.bank"]
-
-[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="FmodBankLoader"]
-event_name = "event:/Music/Music_Shop"
-event_guid = "{fc4e0b29-f3b8-4ce3-8c35-fa4981541f00}"
-autoplay = true
-
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = 58.0
