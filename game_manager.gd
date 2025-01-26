@@ -9,7 +9,7 @@ enum UPGRADE_LEVEL {LOW, MEDIUM, MAX}
 var BOTTLE_LEVEL = UPGRADE_LEVEL.LOW
 var FLAP_POWER = UPGRADE_LEVEL.LOW
 var FLAP_AMOUNT: int = 3			# Number of flaps to increase height
-var SWIMMING_RINGS: int = 1		# Gives a bounce if hits the water
+var SWIMMING_RINGS: int = 0		# Gives a bounce if hits the water
 
 func _ready() -> void:
 	SignalBus.duck_bubble_bounced.connect(bubble_bounced)

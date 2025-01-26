@@ -49,6 +49,9 @@ func _physics_process(delta: float) -> void:
 				glide_up()
 			if Input.is_action_pressed("duck_glide_down"):
 				glide_down()
+		if global_position.y > 1000:
+			SignalBus.open_shop.emit()
+	
 
 func upgrade_stats_from_GameManager():
 	cannon_power = 1 + GameManager.BOTTLE_LEVEL 					# Substitute for cannon
@@ -128,6 +131,8 @@ func duck_water_check() -> void:
 		gravity_scale = 0
 		anim_duck.play("duck_anim_idle")
 		set_physics_process(false)
+		angular_velocity = 0
+		is_gliding = false
 		return
 		
 	if swimming_rings_available > 0:

@@ -24,11 +24,11 @@ var event: FmodEvent = null
 
 func button_click_sound() -> void: play_sound("event:/UI/UI_Click")
 
-func load_main_menu() -> void: play_sound("event:/STOPALLMUSIC")
-func load_scene_escape_attempt() -> void: play_sound("event:/UI/UI_Go")
-func fresh_escape_attempt() -> void: play_sound("event:/UI/UI_Go")
-func retry_escape_attempt() -> void: play_sound("event:/UI/UI_Retry")
-func load_shop_scene() -> void: play_sound("event:/UI/UI_Shop")
+func load_main_menu() -> void: play_sound("event:/STOPALLMUSIC", true)
+func load_scene_escape_attempt() -> void: play_sound("event:/UI/UI_Go", true)
+func fresh_escape_attempt() -> void: play_sound("event:/UI/UI_Go", true)
+func retry_escape_attempt() -> void: play_sound("event:/UI/UI_Retry", true)
+func load_shop_scene() -> void: play_sound("event:/UI/UI_Shop", true)
 
 func pop_the_bottle() -> void: play_sound("event:/SFX/Bottle_PopLvl1")
 #func bubble_bounced(bounce_type:String) -> void: play_sound("event:/SFX/Bottle_PopLvl1")
@@ -37,7 +37,9 @@ func duck_flapping() -> void: play_sound("event:/SFX/Duck/Duck_Flap")
 func duck_splashing() -> void: play_sound("event:/SFX/Duck/Duck_Death")
 
 
-func play_sound(sound:String) -> void:
+func play_sound(sound:String, button_clicked:bool = false) -> void:
+	if button_clicked:
+		button_click_sound()
 	event = FmodServer.create_event_instance(sound)
 	event.start()
 
