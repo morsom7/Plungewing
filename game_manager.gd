@@ -1,9 +1,7 @@
 extends Node
 
-
-
 # Player currency
-var CURRENCY: int = 10000
+var CURRENCY: int = 0
 
 # Upgrade level
 enum UPGRADE_LEVEL {LOW, MEDIUM, MAX}

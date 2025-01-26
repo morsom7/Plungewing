@@ -260,13 +260,6 @@ shape = SubResource("CircleShape2D_4glig")
 sprite_frames = SubResource("SpriteFrames_n0v4u")
 animation = &"pop"
 
-[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
-bank_paths = ["res://audio/Master.strings.bank", "res://audio/Master.bank", "res://audio/SFX.bank"]
-
-[node name="SFX_bubble_pop" type="FmodEventEmitter2D" parent="FmodBankLoader"]
-event_name = "event:/SFX/Bottle_PopLvl1"
-event_guid = "{b4338d9c-af3e-4a0f-b9ad-d9cd3adfe29d}"
-
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
