@@ -1,5 +1,4 @@
 extends Camera2D
-@onready var rubber_duck: RigidBody2D = $"../RubberDuck"
 
 @onready var rubber_duck: RigidBody2D = $"../RubberDuck"
 @export var camera_offset_x: float = 0.0
