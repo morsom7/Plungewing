@@ -39,10 +39,10 @@ script = SubResource("GDScript_j71i7")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = -2.0
-offset_top = -3.0
-offset_right = 1161.0
-offset_bottom = 654.0
+offset_left = 37.0
+offset_top = 40.0
+offset_right = 1036.0
+offset_bottom = 590.0
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
@@ -56,17 +56,12 @@ label_settings = SubResource("LabelSettings_8bev2")
 
 [node name="Currency" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -194.0
-offset_top = 19.0
-offset_right = -21.0
-offset_bottom = 53.0
-grow_horizontal = 0
+offset_left = 72.0
+offset_top = 123.0
+offset_right = 245.0
+offset_bottom = 157.0
 text = "Currency: 9999"
 label_settings = SubResource("LabelSettings_j060h")
-horizontal_alignment = 2
 script = ExtResource("1_8tb5v")
 
 [node name="NextAttempt" type="Button" parent="."]
@@ -80,26 +75,33 @@ Next Escape Attempt"
 script = ExtResource("2_d6d5h")
 
 [node name="Bottle" type="CanvasGroup" parent="."]
+position = Vector2(0, 44)
 
-[node name="Upgrade bottle" type="Button" parent="Bottle"]
-offset_left = 78.0
-offset_top = 198.0
-offset_right = 189.0
-offset_bottom = 229.0
-text = "Upgrade: €10"
-script = ExtResource("3_u4nti")
-
-[node name="Type" type="Label" parent="Bottle/Upgrade bottle"]
-layout_mode = 0
-offset_left = -2.0
-offset_top = -43.0
-offset_right = 80.0
-offset_bottom = -4.0
+[node name="Type" type="Label" parent="Bottle"]
+offset_left = 76.0
+offset_top = 155.0
+offset_right = 158.0
+offset_bottom = 194.0
 text = "Bottle"
 label_settings = SubResource("LabelSettings_cophi")
 
+[node name="Upgrade bottle" type="Button" parent="Bottle"]
+offset_left = 78.0
+offset_top = 236.0
+offset_right = 189.0
+offset_bottom = 267.0
+text = "Upgrade: €10"
+script = ExtResource("3_u4nti")
+
+[node name="Power" type="Label" parent="Bottle/Upgrade bottle"]
+offset_top = -28.0
+offset_right = 89.0
+offset_bottom = -5.0
+text = "Power: Low"
+label_settings = SubResource("LabelSettings_vg6r5")
+
 [node name="Flaps" type="CanvasGroup" parent="."]
-position = Vector2(204, 2)
+position = Vector2(204, 46)
 
 [node name="Label" type="Label" parent="Flaps"]
 offset_left = 76.0
@@ -111,9 +113,9 @@ label_settings = SubResource("LabelSettings_cophi")
 
 [node name="Increase flap power" type="Button" parent="Flaps"]
 offset_left = 82.0
-offset_top = 276.0
+offset_top = 234.0
 offset_right = 193.0
-offset_bottom = 307.0
+offset_bottom = 265.0
 text = "Upgrade: €10"
 script = ExtResource("1_psjwu")
 
@@ -127,9 +129,9 @@ label_settings = SubResource("LabelSettings_vg6r5")
 
 [node name="Increase flap amount" type="Button" parent="Flaps"]
 offset_left = 83.0
-offset_top = 367.0
+offset_top = 318.0
 offset_right = 194.0
-offset_bottom = 398.0
+offset_bottom = 349.0
 text = "Increase: €10"
 script = ExtResource("4_241jp")
 
@@ -142,24 +144,30 @@ text = "Amount"
 label_settings = SubResource("LabelSettings_vg6r5")
 
 [node name="Swimming Ring" type="CanvasGroup" parent="."]
-position = Vector2(412, 3)
+position = Vector2(412, 47)
+
+[node name="SwimmingRing" type="Label" parent="Swimming Ring"]
+offset_left = 76.0
+offset_top = 155.0
+offset_right = 283.0
+offset_bottom = 194.0
+text = "Swimming Ring"
+label_settings = SubResource("LabelSettings_cophi")
 
 [node name="Increase swimming ring" type="Button" parent="Swimming Ring"]
 offset_left = 78.0
-offset_top = 198.0
+offset_top = 233.0
 offset_right = 189.0
-offset_bottom = 229.0
+offset_bottom = 264.0
 text = "Upgrade: €10"
 script = ExtResource("5_q5oxt")
 
 [node name="Amount" type="Label" parent="Swimming Ring/Increase swimming ring"]
-layout_mode = 0
-offset_left = -2.0
-offset_top = -43.0
-offset_right = 205.0
+offset_top = -27.0
+offset_right = 63.0
 offset_bottom = -4.0
-text = "Swimming Ring"
-label_settings = SubResource("LabelSettings_cophi")
+text = "Amount"
+label_settings = SubResource("LabelSettings_vg6r5")
 
 [connection signal="button_up" from="NextAttempt" to="NextAttempt" method="_on_button_up"]
 [connection signal="button_up" from="Bottle/Upgrade bottle" to="Bottle/Upgrade bottle" method="_on_button_up"]
