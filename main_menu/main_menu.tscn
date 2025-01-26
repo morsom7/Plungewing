@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cgq10ucey1kka"]
 
 [ext_resource type="Script" path="res://main_menu/main_menu.gd" id="1_wxe0o"]
-[ext_resource type="Texture2D" uid="uid://bnlqptyrifrn3" path="res://graphics/MainMenu_Background.png" id="2_kkyib"]
+[ext_resource type="Texture2D" uid="uid://pugbcdnjks2" path="res://graphics/MainMenu_Background.png" id="2_kkyib"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wq15d"]
 font_size = 72
@@ -105,7 +105,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "New Run"
+text = "Try to escape the tub"
 
 [node name="ShopVertical" type="VBoxContainer" parent="CanvasMenu/MainMenu"]
 custom_minimum_size = Vector2(0, 50)

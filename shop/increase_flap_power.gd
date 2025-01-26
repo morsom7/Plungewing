@@ -19,7 +19,7 @@ func _on_button_up() -> void:
 	SignalBus.button_click.emit()
 	var variable = GameManager.FLAP_POWER			# UPDATE!!!
 	# If enough currency
-	if GameManager.CURRENCY > cost[variable]:
+	if GameManager.CURRENCY >= cost[variable]:
 		var reached_max_level = GameManager.increase_flap_power(cost[variable])
 		if reached_max_level:
 			self.disabled = true

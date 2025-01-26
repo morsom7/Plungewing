@@ -18,6 +18,6 @@ func update_texts() -> void:
 
 func _on_button_up() -> void:
 	SignalBus.button_click.emit()
-	if GameManager.CURRENCY > get_cost():
+	if GameManager.CURRENCY >= get_cost():
 		GameManager.increase_swimming_rings(get_cost())
 		update_texts()
