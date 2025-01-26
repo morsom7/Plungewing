@@ -25,6 +25,7 @@ func _ready() -> void:
 	SignalBus.bottle_popped.connect(launch)
 	SignalBus.duck_hit_water.connect(duck_water_check)
 	SignalBus.duck_bubble_bounced.connect(bounce)
+	SignalBus.ui_retry.connect(upgrade_stats_from_GameManager)
 	
 	self.global_position = bottle_duck_anchor.global_position
 	upgrade_stats_from_GameManager()
@@ -48,10 +49,6 @@ func _physics_process(delta: float) -> void:
 				glide_up()
 			if Input.is_action_pressed("duck_glide_down"):
 				glide_down()
-				
-	if global_position.y > 1000:
-		SignalBus.open_shop.emit()
-pass
 
 func upgrade_stats_from_GameManager():
 	cannon_power = 1 + GameManager.BOTTLE_LEVEL 					# Substitute for cannon
@@ -123,19 +120,20 @@ func is_hit() -> void:
 	add_constant_torque(500)
 
 func duck_water_check() -> void:
-	print("Duck_hit_water")
+	#print("Duck_hit_water")
+	
+	if (swimming_rings_available <= 0):
+		SignalBus.duck_splash.emit()
+		linear_velocity = Vector2(0,0)
+		gravity_scale = 0
+		anim_duck.play("duck_anim_idle")
+		set_physics_process(false)
+		return
+		
 	if swimming_rings_available > 0:
 		apply_impulse(Vector2(0, 2 * -linear_velocity.y))
 		swimming_rings_available -= 1
 		SignalBus.duck_swimming_rings_remaining.emit(swimming_rings_available)
 		return
 	
-	SignalBus.duck_splash.emit()
-	linear_velocity = Vector2(0,0)
-	gravity_scale = 0
-	angular_velocity = 0
-	is_gliding = false
-	anim_duck.play("duck_anim_idle")
-	set_physics_process(false)
 	
-	pass # Replace with function body.
