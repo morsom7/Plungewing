@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c2cxwo00kftak"]
+[gd_scene load_steps=23 format=3 uid="uid://c2cxwo00kftak"]
 
 [ext_resource type="PackedScene" uid="uid://bj7a2ak2p80u0" path="res://escaping_tub/rubber_duck.tscn" id="1_67ee0"]
 [ext_resource type="Script" path="res://escaping_tub/fat_man.gd" id="2_6sijt"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dp5sdsdh3n2ef" path="res://graphics/BG_bad.png" id="7_hx222"]
 [ext_resource type="PackedScene" uid="uid://23ccbpdm5vbd" path="res://milestone.tscn" id="8_hwof7"]
 [ext_resource type="PackedScene" uid="uid://dbix2pmptn7vk" path="res://escaping_tub/bubble_spawner.tscn" id="9_dndk1"]
+[ext_resource type="Script" path="res://escaping_tub/camera_2d.gd" id="11_qq5du"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdft1"]
 size = Vector2(50480, 56)
@@ -131,15 +132,6 @@ swimming_rings_available = 1
 is_gliding = true
 metadata/_edit_lock_ = true
 
-[node name="Camera2D" type="Camera2D" parent="RubberDuck"]
-position = Vector2(300, 0)
-limit_left = 0
-limit_bottom = 704
-limit_smoothed = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-editor_draw_limits = true
-
 [node name="Bathtub" type="Node" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Bathtub"]
@@ -174,5 +166,15 @@ position = Vector2(543, 483)
 [node name="end_run_screen" parent="." instance=ExtResource("6_t5p5f")]
 z_index = 10
 position = Vector2(628, 432)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(628, 432)
+limit_left = 0
+limit_bottom = 704
+limit_smoothed = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_limits = true
+script = ExtResource("11_qq5du")
 
 [connection signal="body_entered" from="Bathwater/BathwaterArea" to="Bathwater/BathwaterArea" method="_on_body_entered"]

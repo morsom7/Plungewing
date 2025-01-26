@@ -10,6 +10,7 @@ var control_mode = BOTTLE_MODE
 @export var swimming_rings_available: int = 0			# Gives a bounce if hits the water
 @export var glide_power: float = 1.0						# The amount glide affects trajectory
 @export var is_gliding: bool = false					# checks if duck is gliding
+
 var is_attached_to_cannon: bool = true						# Checks if duck is launched
 @onready var bottle_duck_anchor: Node2D = $"../FatMan/Launcher/AnimBottleCola/Bottle_DuckAnchor"
 @onready var launcher: RigidBody2D = $"../FatMan/Launcher"
@@ -40,9 +41,12 @@ func _physics_process(delta: float) -> void:
 			flap()
 			pass
 		if is_gliding:
-			if Input.is_action_just_pressed("duck_glide_up"):
+			angular_velocity = 0
+			anim_duck.play("duck_anim_glide")
+			anim_duck.speed_scale = 1
+			if Input.is_action_pressed("duck_glide_up"):
 				glide_up()
-			if Input.is_action_just_pressed("duck_glide_down"):
+			if Input.is_action_pressed("duck_glide_down"):
 				glide_down()
 
 func upgrade_stats_from_GameManager():
@@ -56,7 +60,9 @@ func launch():
 	control_mode = DUCK_MODE
 	gravity_scale = 1
 	apply_impulse(Vector2(1000 * cannon_power,-1000 * cannon_power))
-	apply_torque_impulse(500)
+	apply_torque_impulse(1000)
+	is_hit()
+	
 	pass
 
 func flap() -> void:
@@ -66,22 +72,30 @@ func flap() -> void:
 		SignalBus.duck_flaps.emit() 
 		is_gliding = true
 		anim_duck.play("duck_anim_glide")
+		anim_duck.speed_scale = 1
 		apply_impulse(Vector2(0,linear_velocity.y * flap_power * get_process_delta_time()))
 		linear_velocity.y = clamp(linear_velocity.y,0,linear_velocity.y)
 		apply_impulse(Vector2(0, -1000 * flap_power))
 
 
 func glide_up() -> void:
-	apply_impulse(Vector2(0,-glide_power * 250))
+	angular_velocity = 0
 	global_rotation_degrees = -15
+	anim_duck.speed_scale = 2
+	apply_impulse(Vector2(0,-glide_power * 600 * get_physics_process_delta_time()))
+	print("Glide up "+str(Vector2(0, -glide_power * 600 * get_physics_process_delta_time())))
 	# add slight upwards force to counteract gravity
+	
 	# play animation
 	# play sound	
 	pass
 	
 func glide_down() -> void:
-	apply_impulse(Vector2(0, glide_power * 250))
+	angular_velocity = 0
 	global_rotation_degrees = 15
+	anim_duck.speed_scale = 0.1
+	apply_impulse(Vector2(0, glide_power * 500 * get_physics_process_delta_time()))
+	print("Glide down "+str(Vector2(0, glide_power * 500 * get_physics_process_delta_time())))
 	# add slight upwards force to counteract gravity
 	# play animation
 	# play sound	
