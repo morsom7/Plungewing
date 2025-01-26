@@ -28,7 +28,7 @@ func end_run_screen():
 
 func _on_retry_button_pressed() -> void:
 	print("Retry")
-	SignalBus.next_escape_attempt.emit()
+	SignalBus.ui_retry.emit()
 	pass # Replace with function body.
 
 

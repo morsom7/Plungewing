@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	# Only detects the player, because the player has Collision = 2, and Bubble has Mask = 2
-	print("Bubble popped")
+	#print("Bubble popped")
 	SignalBus.duck_bubble_bounced.emit(bubble_type)
 	_animated_sprite.play("pop")
 	
@@ -27,5 +27,6 @@ func _on_body_entered(body: Node) -> void:
 
 
 func _on_timer_timeout() -> void:
-	print("times up!")
+	#print("times up!")
+	queue_free()
 	pass # Replace with function body.
