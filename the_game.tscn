@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://byip8dxh07eh4"]
+[gd_scene load_steps=2 format=3 uid="uid://cjn2uhu20p86d"]
 
 [ext_resource type="Script" path="res://the_game.gd" id="1_gddlr"]
 
@@ -9,7 +9,6 @@ script = ExtResource("1_gddlr")
 bank_paths = ["res://audio/Master.strings.bank", "res://audio/Master.bank", "res://audio/Music.bank", "res://audio/SFX.bank", "res://audio/UI.bank"]
 
 [node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="FmodBankLoader"]
-event_name = "event:/STOPALLMUSIC"
 event_guid = "{e8d1d888-1ec6-4ea4-b767-fc0f9d329874}"
 autoplay = true
 

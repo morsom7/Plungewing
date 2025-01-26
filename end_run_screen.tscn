@@ -129,3 +129,7 @@ grow_vertical = 2
 text = "This is your stats"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="end_run_screen_canvas/ScreenSpace/RetryVertical/RetryCenter/RetryPanel/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="end_run_screen_canvas/ScreenSpace/HomeVertical/HomeCenter/HomePanel/HomeButton" to="." method="_on_home_button_pressed"]
+[connection signal="pressed" from="end_run_screen_canvas/ScreenSpace/QuitVertical/QuitCenter/QuitPanel/QuitButton" to="." method="_on_quit_button_pressed"]

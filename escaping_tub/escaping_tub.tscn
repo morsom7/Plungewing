@@ -140,8 +140,6 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_limits = true
 
-[node name="end_run_screen" parent="RubberDuck/Camera2D" instance=ExtResource("6_t5p5f")]
-
 [node name="Bathtub" type="Node" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Bathtub"]
@@ -172,5 +170,9 @@ position = Vector2(1096, 504)
 
 [node name="BubbleSpawner" parent="." instance=ExtResource("9_dndk1")]
 position = Vector2(543, 483)
+
+[node name="end_run_screen" parent="." instance=ExtResource("6_t5p5f")]
+z_index = 10
+position = Vector2(628, 432)
 
 [connection signal="body_entered" from="Bathwater/BathwaterArea" to="Bathwater/BathwaterArea" method="_on_body_entered"]
