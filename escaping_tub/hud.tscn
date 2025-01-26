@@ -6,30 +6,54 @@
 font_size = 24
 
 [node name="HUD" type="Control"]
+custom_minimum_size = Vector2(800, 0)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_4fndq")
 
-[node name="Label" type="Label" parent="."]
+[node name="SwimmingRings" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -35.0
-offset_right = 35.0
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "Currency"
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 197.0
+offset_bottom = 38.0
+text = "Swimming rings:"
+label_settings = SubResource("LabelSettings_p84qt")
+
+[node name="Flaps" type="Label" parent="."]
+layout_mode = 1
+offset_left = 11.0
+offset_top = 42.0
+offset_right = 116.0
+offset_bottom = 76.0
+text = "Flaps"
+label_settings = SubResource("LabelSettings_p84qt")
+
+[node name="Currency" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = 5.0
+offset_bottom = 39.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Currency: "
 label_settings = SubResource("LabelSettings_p84qt")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -81.0
-offset_bottom = 31.0
-grow_horizontal = 0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.5
+offset_top = 6.0
+offset_right = 40.5
+offset_bottom = 37.0
+grow_horizontal = 2
 text = "Try Again"
 
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
