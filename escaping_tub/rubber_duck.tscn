@@ -91,16 +91,10 @@ z_index = 5
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_1r0y6")
 animation = &"duck_anim_idle"
-frame_progress = 0.779218
+frame_progress = 0.28397
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ggcmc")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
-limit_left = 0
-limit_bottom = 704
-limit_smoothed = true
 
 [node name="Duck_bubble_particles" type="GPUParticles2D" parent="."]
 z_index = 1

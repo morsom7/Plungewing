@@ -6,13 +6,16 @@ var control_mode = BOTTLE_MODE
 # Upgradables
 @export var cannon_power: float = 1.0 					# Substitute for cannon
 @export var flap_power: float = 0.1						# Strength of the flap
-@export var flaps_available: int = 1					# Flapping increases height and allows for more glide
+@export var flaps_available: int = 5					# Flapping increases height and allows for more glide
 @export var swimming_rings_available: int = 0			# Gives a bounce if hits the water
 @export var glide_power: float = 1.0						# The amount glide affects trajectory
 @export var is_gliding: bool = false					# checks if duck is gliding
 var is_attached_to_cannon: bool = true						# Checks if duck is launched
 @onready var bottle_duck_anchor: Node2D = $"../FatMan/Launcher/AnimatedSprite2D/Bottle_DuckAnchor"
 @onready var launcher: RigidBody2D = $"../FatMan/Launcher"
+@onready var anim_duck: AnimatedSprite2D = $AnimDuck
+@onready var anim_bottle_fizz: AnimatedSprite2D = $AnimBottleFizz
+
 
 var is_at_rest: bool = false
 
@@ -20,6 +23,7 @@ func _ready() -> void:
 	SignalBus.duck_bubble_bounced.connect(bounce)
 	SignalBus.bottle_popped.connect(launch)
 	SignalBus.duck_hit_water.connect(duck_water_check)
+	SignalBus.duck_bubble_bounced.connect(bounce)
 	global_position = bottle_duck_anchor.global_position
 	#test FMOD
 
@@ -49,8 +53,10 @@ func launch():
 
 func flap() -> void:
 	if flaps_available > 0:
+		flaps_available -= 1
 		SignalBus.duck_flaps.emit() 
 		is_gliding = true
+		anim_duck.play("duck_anim_glide")
 		apply_impulse(Vector2(0,linear_velocity.y * flap_power * get_process_delta_time()))
 		
 	# play animation
@@ -75,10 +81,14 @@ func glide_down() -> void:
 	pass
 	
 func bounce(bounce_power: float) -> void:
+	apply_impulse(Vector2(250 * get_physics_process_delta_time(),250 * get_physics_process_delta_time()))
+	# play animation
+	# Play sound
 	pass
 	
 func is_hit() -> void:
 	is_gliding = false
+	anim_duck.play("duck_anim_hit")
 	add_constant_torque(500)
 
 func duck_water_check() -> void:
@@ -90,5 +100,7 @@ func duck_water_check() -> void:
 	SignalBus.duck_splash.emit()
 	linear_velocity = Vector2(0,0)
 	gravity_scale = 0
+	anim_duck.play("duck_anim_idle")
 	set_physics_process(false)
+	
 	pass # Replace with function body.

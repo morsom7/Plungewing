@@ -49,7 +49,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_8j4ys")
 }],
 "loop": true,
-"name": &"bottle_rest",
+"name": &"anim_bottle_rest",
 "speed": 15.0
 }, {
 "frames": [{
@@ -72,7 +72,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_psv5h")
 }],
 "loop": true,
-"name": &"bottle_shake",
+"name": &"anim_bottle_shake",
 "speed": 15.0
 }]
 
@@ -109,14 +109,13 @@ shape = SubResource("CircleShape2D_lbv6x")
 gravity_scale = 0.0
 angular_damp = 100.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FatMan/Launcher"]
+[node name="AnimBottleCola" type="AnimatedSprite2D" parent="FatMan/Launcher"]
 position = Vector2(264, 496)
 rotation = 0.785397
 sprite_frames = SubResource("SpriteFrames_so465")
-animation = &"bottle_shake"
-frame_progress = 0.318222
+animation = &"anim_bottle_shake"
 
-[node name="Bottle_DuckAnchor" type="Node2D" parent="FatMan/Launcher/AnimatedSprite2D"]
+[node name="Bottle_DuckAnchor" type="Node2D" parent="FatMan/Launcher/AnimBottleCola"]
 position = Vector2(0, -90.5092)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FatMan/Launcher"]
@@ -129,6 +128,15 @@ flap_power = 1.0
 swimming_rings_available = 1
 is_gliding = true
 metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="RubberDuck"]
+position = Vector2(300, 0)
+limit_left = 0
+limit_bottom = 704
+limit_smoothed = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_limits = true
 
 [node name="Bathtub" type="Node" parent="."]
 
