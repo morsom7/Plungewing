@@ -23,7 +23,6 @@ func _on_body_entered(body: Node) -> void:
 	_animated_sprite.play("pop")
 	
 	# play animation -> animation + fade
-	$FmodBankLoader/SFX_bubble_pop.play_one_shot()
 	$Timer.start()
 
 
