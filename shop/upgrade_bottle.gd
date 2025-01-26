@@ -16,6 +16,7 @@ func update_texts() -> void:
 
 
 func _on_button_up() -> void:
+	SignalBus.button_click.emit()
 	var variable = GameManager.BOTTLE_LEVEL			# UPDATE!!!
 	# If enough currency
 	if GameManager.CURRENCY > cost[variable]:
