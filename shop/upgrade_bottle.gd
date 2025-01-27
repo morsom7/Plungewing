@@ -1,7 +1,7 @@
 extends Button
 
 @onready var label = $Power				# UPDATE!!!
-var cost = [350, 1000]
+var cost = [100, 250]
 
 func _ready() -> void:
 	update_texts()

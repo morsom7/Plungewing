@@ -122,9 +122,8 @@ func is_hit() -> void:
 	anim_duck.play("duck_anim_hit")
 	add_constant_torque(500)
 
-func duck_water_check() -> void:
-	#print("Duck_hit_water")
-	
+var ready_for_water_check: bool = true
+func duck_water_check() -> void:	
 	if (swimming_rings_available <= 0):
 		SignalBus.duck_splash.emit()
 		linear_velocity = Vector2(0,0)
@@ -135,10 +134,15 @@ func duck_water_check() -> void:
 		is_gliding = false
 		return
 		
-	if swimming_rings_available > 0:
+	if swimming_rings_available > 0 and ready_for_water_check:
+		ready_for_water_check = false
+		$Timer.start()
+		#print("Timer started")
 		apply_impulse(Vector2(0, 2 * -linear_velocity.y))
 		swimming_rings_available -= 1
 		SignalBus.duck_swimming_rings_remaining.emit(swimming_rings_available)
 		return
-	
-	
+
+# Opens for another water check (to avoid bug of double hit)
+func _on_timer_timeout() -> void:
+	ready_for_water_check = true
